@@ -8,7 +8,7 @@
 
 import UIKit
 import MapKit
-
+import AlamofireImage
 class KADetailTableViewController: UITableViewController {
     
     private struct CellIdentifier {
@@ -18,12 +18,14 @@ class KADetailTableViewController: UITableViewController {
     
     
     private enum Section {
+        case Title(String)
         case Description(text: String)
         case Detail(details: [(String, String)])
         case Map(region: MKCoordinateRegion)
         
         var rows: Int {
             switch self {
+            case .Title(_): return 1
             case .Description(_): return 1
             case .Detail(let details): return details.count
             case .Map(_): return 1
@@ -32,12 +34,19 @@ class KADetailTableViewController: UITableViewController {
         
         var identfier: String {
             switch self {
+            case .Title(_): return "bitspls.cell.title"
             case .Description(_): return "bitspls.cell.description"
             case .Detail(_): return "bitspls.cell.detail"
             case .Map(_): return "bitspls.cell.map"
             }
         }
         
+        var headerText: String? {
+            switch self {
+            case .Description(_): return "Beschreibung"
+            default: return nil
+            }
+        }
         
     }
     
@@ -46,14 +55,19 @@ class KADetailTableViewController: UITableViewController {
     
     private lazy var sections: [Section] = {
         guard let newItem = self.item else { return [] }
-        return [.Description(text: newItem.description),
-            .Detail(details: [("Name", newItem.title)])]
+        return [.Title(newItem.title), .Description(text: newItem.description),
+            .Detail(details: newItem.details)]
     }()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.addParallaxWithImage(UIImage(named: "test.jpg"), andHeight: 200)
+        
+        self.tableView.addParallaxWithImage(UIImage(), andHeight: 200)
+        if let url = item?.imageURL {
+            self.tableView.parallaxView.imageView.af_setImageWithURL(url)
+        }
+        self.title = item?.title
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableViewAutomaticDimension
     }
@@ -73,6 +87,8 @@ class KADetailTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(section.identfier, forIndexPath: indexPath)
         
         switch (section, cell) {
+        case (.Title(let t), let titleCell as KATitleTableViewCell):
+            titleCell.titleLabel.text = t
         case (.Description(let text), let desCell as KADescriptionTableViewCell):
             desCell.label.text = text
         case (.Detail(let details), let detailCell as KADetailTableViewCell):
@@ -85,4 +101,22 @@ class KADetailTableViewController: UITableViewController {
         
     }
     
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sections[section].headerText
+    }
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animateAlongsideTransition({ context in
+            self.tableView.parallaxView.frame.size.width = self.tableView.bounds.width
+            self.tableView.parallaxView.imageView.frame.size.width = self.tableView.bounds.width
+            }, completion: nil)
+    }
+    
+}
+
+extension KAItem {
+    var details: [(String, String)] {
+        return [("Postleitzahl", self.city),
+            ("E-Mail", self.email), self.phone.map { ("Telefon", $0) }].flatMap { $0 }
+    }
 }
