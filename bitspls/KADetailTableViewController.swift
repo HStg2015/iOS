@@ -85,6 +85,13 @@ class KADetailTableViewController: UITableViewController {
         
     }
     
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animateAlongsideTransition({ context in
+            self.tableView.parallaxView.frame.size.width = self.tableView.bounds.width
+            self.tableView.parallaxView.imageView.frame.size.width = self.tableView.bounds.width
+            }, completion: nil)
+    }
+    
 }
 
 extension KAItem {

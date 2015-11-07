@@ -23,7 +23,13 @@ class KAViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        refreshControl.addTarget(self, action: Selector("loadItems"), forControlEvents: .ValueChanged)
         self.collectionView?.addSubview(refreshControl)
+        self.collectionView?.alwaysBounceVertical = true
+        loadItems()
+    }
+    
+    func loadItems() {
         self.refreshControl.beginRefreshing()
         KAModel.loadItems({
             self.refreshControl.endRefreshing()
