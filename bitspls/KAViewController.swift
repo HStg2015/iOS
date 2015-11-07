@@ -14,19 +14,35 @@ class KAViewController: UICollectionViewController {
         static let KACell = "bitspls.ka.cell"
         static let DetailSegue = "bitspls.ka.detail.segue"
     }
+    private let refreshControl = UIRefreshControl()
+    private var items: [KAItem]? {
+        didSet {
+            self.collectionView?.reloadData()
+        }
+    }
     
-    lazy var testData: [KAItem] = {
-        return (0...20).map { KAItem(test: "Test \($0)") }
-    }()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.collectionView?.addSubview(refreshControl)
+        self.refreshControl.beginRefreshing()
+        KAModel.loadItems({
+            self.refreshControl.endRefreshing()
+            self.items = $0
+            }) { error in
+                print(error)
+        }
+    }
+    
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return testData.count
+        return items?.count ?? 0
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.KACell, forIndexPath: indexPath)
-        guard let kaCell = cell as? KACollectionViewCell where testData.count > indexPath.row else { return cell }
-        kaCell.item = testData[indexPath.row]
-        return kaCell
+        guard let itemCell = cell as? KACollectionViewCell,
+                itemAry = self.items where itemAry.count > indexPath.row else { return cell }
+        itemCell.item = itemAry[indexPath.row]
+        return itemCell
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

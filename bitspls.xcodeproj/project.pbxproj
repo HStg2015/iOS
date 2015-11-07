@@ -11,6 +11,7 @@
 		7F387F921BEE0C1300E2CF43 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7F387F911BEE0C1300E2CF43 /* test.jpg */; };
 		7FB0D8F41BEE1A650009E5E6 /* KADescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB0D8F31BEE1A650009E5E6 /* KADescriptionTableViewCell.swift */; };
 		7FB0D8FD1BEE2C7D0009E5E6 /* KADetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB0D8FC1BEE2C7D0009E5E6 /* KADetailTableViewCell.swift */; };
+		7FB0D8FF1BEE38AF0009E5E6 /* KAModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB0D8FE1BEE38AF0009E5E6 /* KAModel.swift */; };
 		7FB16CC31BEDF917002AF60D /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB16CC21BEDF917002AF60D /* CustomColors.swift */; };
 		7FC30AB41BED567800BFA883 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC30AB31BED567800BFA883 /* AppDelegate.swift */; };
 		7FC30AB61BED567800BFA883 /* KAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC30AB51BED567800BFA883 /* KAViewController.swift */; };
@@ -49,6 +50,7 @@
 		7FB0D8F31BEE1A650009E5E6 /* KADescriptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KADescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		7FB0D8F51BEE1CB10009E5E6 /* bitspls-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bitspls-Bridging-Header.h"; sourceTree = "<group>"; };
 		7FB0D8FC1BEE2C7D0009E5E6 /* KADetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KADetailTableViewCell.swift; sourceTree = "<group>"; };
+		7FB0D8FE1BEE38AF0009E5E6 /* KAModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAModel.swift; sourceTree = "<group>"; };
 		7FB16CC21BEDF917002AF60D /* CustomColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		7FC30AB01BED567700BFA883 /* bitspls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bitspls.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FC30AB31BED567800BFA883 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				7FC30AE61BED645900BFA883 /* KAItem.swift */,
+				7FB0D8FE1BEE38AF0009E5E6 /* KAModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				7FC30AB61BED567800BFA883 /* KAViewController.swift in Sources */,
 				7F31FFC41BEE16ED0031D728 /* KADetailTableViewController.swift in Sources */,
 				7FB0D8FD1BEE2C7D0009E5E6 /* KADetailTableViewCell.swift in Sources */,
+				7FB0D8FF1BEE38AF0009E5E6 /* KAModel.swift in Sources */,
 				7FC30AB41BED567800BFA883 /* AppDelegate.swift in Sources */,
 				7FB16CC31BEDF917002AF60D /* CustomColors.swift in Sources */,
 				7FB0D8F41BEE1A650009E5E6 /* KADescriptionTableViewCell.swift in Sources */,

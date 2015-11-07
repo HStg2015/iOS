@@ -4,17 +4,20 @@ PODS:
     - Alamofire (~> 3.1)
   - APParallaxHeader (0.1.6)
   - Argo (2.2.0)
+  - Curry (1.4.0)
 
 DEPENDENCIES:
   - Alamofire (~> 3.1)
   - AlamofireImage (~> 2.1)
   - APParallaxHeader (~> 0.1)
   - Argo (~> 2.2)
+  - Curry (~> 1.4)
 
 SPEC CHECKSUMS:
   Alamofire: 7c16ca65f3c7e681fd925fd7f2dec7747ff96855
   AlamofireImage: 97e00995920d85b5cb23ee4c3b7f92605f5dc74b
   APParallaxHeader: 854bc48a2487ca12c702f8a236fec0d89cdac5c3
   Argo: 4f52a32b4cd913c204e5a45f420b3fccad3e3f24
+  Curry: 294533187eedbf52db60a1e70c29b4f5c9f621c0
 
 COCOAPODS: 0.39.0

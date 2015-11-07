@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '132D1930FC8BD95564F2F78E'
-               BlueprintName = 'Pods-bitspls'
+               BlueprintIdentifier = '7B4CFB471BEDE4BAA0EDBA1B'
+               BlueprintName = 'Curry'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Pods_bitspls.framework'>
+               BuildableName = 'Curry.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

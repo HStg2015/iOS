@@ -47,7 +47,7 @@ class KADetailTableViewController: UITableViewController {
     private lazy var sections: [Section] = {
         guard let newItem = self.item else { return [] }
         return [.Description(text: newItem.description),
-            .Detail(details: [("Name", newItem.title)])]
+            .Detail(details: newItem.details)]
     }()
     
     
@@ -85,4 +85,11 @@ class KADetailTableViewController: UITableViewController {
         
     }
     
+}
+
+extension KAItem {
+    var details: [(String, String)] {
+        return [("Postleitzahl", self.city),
+            ("E-Mail", self.email), self.phone.map { ("Telefon", $0) }].flatMap { $0 }
+    }
 }
