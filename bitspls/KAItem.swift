@@ -9,22 +9,36 @@
 import Argo
 import Curry
 
+
+
 struct KAItem {
+    let id: Int
     let title: String
     let description: String
     let city: String
     let email: String
     let phone: String?
-    let imageURL: NSURL = NSURL(string: "https://qph.is.quoracdn.net/main-qimg-31983979e389060f645ad1ad7e20dbf0?convert_to_webp=true")!
+    let image: String?
+    let timestamp: String
+    
+    var imageURL: NSURL? {
+        return self.image.flatMap { NSURL(string: $0) }
+    }
 }
 
 extension KAItem: Decodable {
     static func decode(j: JSON) -> Decoded<KAItem> {
-        return curry(KAItem.init)
-            <^> j <| "title"
+        let a = curry(KAItem.init)
+         return a <^> j <| "id"
+            <*> j <| "title"
             <*> j <| "description"
             <*> j <| "city"
             <*> j <| "email"
             <*> j <|? "telephone"
+            <*> j <|? "image"
+            <*> j <| "create_time"
+        
     }
 }
+
+

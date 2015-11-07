@@ -54,7 +54,13 @@
                                             <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="1SS-Am-oyC" secondAttribute="height" multiplier="1:1" id="2o2-IC-47Z"/>
+                                                <constraint firstAttribute="width" constant="100" id="DU4-fx-bN1"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="DU4-fx-bN1"/>
+                                                </mask>
+                                            </variation>
                                         </imageView>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oha-r3-cly">
                                             <rect key="frame" x="8" y="171" width="184" height="21"/>

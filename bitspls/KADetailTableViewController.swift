@@ -8,7 +8,7 @@
 
 import UIKit
 import MapKit
-
+import AlamofireImage
 class KADetailTableViewController: UITableViewController {
     
     private struct CellIdentifier {
@@ -53,7 +53,11 @@ class KADetailTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.addParallaxWithImage(UIImage(named: "test.jpg"), andHeight: 200)
+        
+        self.tableView.addParallaxWithImage(UIImage(), andHeight: 200)
+        if let url = item?.imageURL {
+            self.tableView.parallaxView.imageView.af_setImageWithURL(url)
+        }
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableViewAutomaticDimension
     }

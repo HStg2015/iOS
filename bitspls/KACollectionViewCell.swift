@@ -17,14 +17,13 @@ class KACollectionViewCell: UICollectionViewCell {
     
     var item: KAItem? {
         didSet {
-            guard let newItem = self.item else {
-                imageView.image = nil
-                titleLabel.text = nil
-                return
-            }
             
-            imageView.af_setImageWithURL(newItem.imageURL)
-            titleLabel.text = newItem.title
+            if let imageURL = item?.imageURL {
+                imageView.af_setImageWithURL(imageURL, placeholderImage: UIImage(named: "placeholder"))
+            } else {
+                imageView.image = UIImage(named: "placeholder")
+            }
+            titleLabel.text = item?.title
         }
     }
 }

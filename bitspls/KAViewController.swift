@@ -8,7 +8,7 @@
 
 import UIKit
 
-class KAViewController: UICollectionViewController {
+class KAViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     private struct Storyboard {
         static let KACell = "bitspls.ka.cell"
@@ -26,8 +26,10 @@ class KAViewController: UICollectionViewController {
         refreshControl.addTarget(self, action: Selector("loadItems"), forControlEvents: .ValueChanged)
         self.collectionView?.addSubview(refreshControl)
         self.collectionView?.alwaysBounceVertical = true
+        updateItemSizeForSizeClass(self.traitCollection)
         loadItems()
     }
+    
     
     func loadItems() {
         self.refreshControl.beginRefreshing()
@@ -49,6 +51,17 @@ class KAViewController: UICollectionViewController {
                 itemAry = self.items where itemAry.count > indexPath.row else { return cell }
         itemCell.item = itemAry[indexPath.row]
         return itemCell
+    }
+    
+    
+    override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animateAlongsideTransition({ ctx in
+            self.updateItemSizeForSizeClass(newCollection)
+            }, completion: nil)
+    }
+    
+    private func updateItemSizeForSizeClass(newCollection: UITraitCollection) {
+        (self.collectionViewLayout as? UICollectionViewFlowLayout)?.itemSize.width = newCollection.horizontalSizeClass == .Compact ? 150 : 250
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
