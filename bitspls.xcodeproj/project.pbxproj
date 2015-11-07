@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7FB16CBD1BED7495002AF60D /* KADetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB16CBC1BED7495002AF60D /* KADetailViewController.swift */; };
+		7F31FFC41BEE16ED0031D728 /* KADetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F31FFC31BEE16ED0031D728 /* KADetailTableViewController.swift */; };
+		7F387F921BEE0C1300E2CF43 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7F387F911BEE0C1300E2CF43 /* test.jpg */; };
+		7FB0D8F41BEE1A650009E5E6 /* KADescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB0D8F31BEE1A650009E5E6 /* KADescriptionTableViewCell.swift */; };
+		7FB0D8FD1BEE2C7D0009E5E6 /* KADetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB0D8FC1BEE2C7D0009E5E6 /* KADetailTableViewCell.swift */; };
+		7FB16CC31BEDF917002AF60D /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB16CC21BEDF917002AF60D /* CustomColors.swift */; };
 		7FC30AB41BED567800BFA883 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC30AB31BED567800BFA883 /* AppDelegate.swift */; };
 		7FC30AB61BED567800BFA883 /* KAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC30AB51BED567800BFA883 /* KAViewController.swift */; };
 		7FC30AB91BED567800BFA883 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FC30AB71BED567800BFA883 /* Main.storyboard */; };
@@ -40,7 +44,12 @@
 /* Begin PBXFileReference section */
 		137DA4DD855E8B0171DA91ED /* Pods-bitspls.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bitspls.release.xcconfig"; path = "Pods/Target Support Files/Pods-bitspls/Pods-bitspls.release.xcconfig"; sourceTree = "<group>"; };
 		5D6C8F5C26D2AD22B800A05B /* Pods_bitspls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bitspls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7FB16CBC1BED7495002AF60D /* KADetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KADetailViewController.swift; sourceTree = "<group>"; };
+		7F31FFC31BEE16ED0031D728 /* KADetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KADetailTableViewController.swift; sourceTree = "<group>"; };
+		7F387F911BEE0C1300E2CF43 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
+		7FB0D8F31BEE1A650009E5E6 /* KADescriptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KADescriptionTableViewCell.swift; sourceTree = "<group>"; };
+		7FB0D8F51BEE1CB10009E5E6 /* bitspls-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bitspls-Bridging-Header.h"; sourceTree = "<group>"; };
+		7FB0D8FC1BEE2C7D0009E5E6 /* KADetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KADetailTableViewCell.swift; sourceTree = "<group>"; };
+		7FB16CC21BEDF917002AF60D /* CustomColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		7FC30AB01BED567700BFA883 /* bitspls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bitspls.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FC30AB31BED567800BFA883 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7FC30AB51BED567800BFA883 /* KAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAViewController.swift; sourceTree = "<group>"; };
@@ -125,7 +134,7 @@
 				7FC30ACA1BED567800BFA883 /* Info.plist */,
 			);
 			path = bitsplsTests;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		7FC30AD21BED567800BFA883 /* bitsplsUITests */ = {
 			isa = PBXGroup;
@@ -139,10 +148,13 @@
 		7FC30AE11BED5BE600BFA883 /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
+				7FB0D8F51BEE1CB10009E5E6 /* bitspls-Bridging-Header.h */,
 				7FC30AB31BED567800BFA883 /* AppDelegate.swift */,
 				7FC30ABA1BED567800BFA883 /* Assets.xcassets */,
 				7FC30ABC1BED567800BFA883 /* LaunchScreen.storyboard */,
 				7FC30ABF1BED567800BFA883 /* Info.plist */,
+				7FB16CC21BEDF917002AF60D /* CustomColors.swift */,
+				7F387F911BEE0C1300E2CF43 /* test.jpg */,
 			);
 			name = "Supporting files";
 			sourceTree = "<group>";
@@ -151,7 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				7FC30AB51BED567800BFA883 /* KAViewController.swift */,
-				7FB16CBC1BED7495002AF60D /* KADetailViewController.swift */,
+				7F31FFC31BEE16ED0031D728 /* KADetailTableViewController.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -161,6 +173,8 @@
 			children = (
 				7FC30AE21BED5C0800BFA883 /* View Controller */,
 				7FC30AE31BED5CB800BFA883 /* KACollectionViewCell.swift */,
+				7FB0D8F31BEE1A650009E5E6 /* KADescriptionTableViewCell.swift */,
+				7FB0D8FC1BEE2C7D0009E5E6 /* KADetailTableViewCell.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -298,6 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FC30ABE1BED567800BFA883 /* LaunchScreen.storyboard in Resources */,
+				7F387F921BEE0C1300E2CF43 /* test.jpg in Resources */,
 				7FC30ABB1BED567800BFA883 /* Assets.xcassets in Resources */,
 				7FC30AB91BED567800BFA883 /* Main.storyboard in Resources */,
 			);
@@ -373,10 +388,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FC30AB61BED567800BFA883 /* KAViewController.swift in Sources */,
+				7F31FFC41BEE16ED0031D728 /* KADetailTableViewController.swift in Sources */,
+				7FB0D8FD1BEE2C7D0009E5E6 /* KADetailTableViewCell.swift in Sources */,
 				7FC30AB41BED567800BFA883 /* AppDelegate.swift in Sources */,
+				7FB16CC31BEDF917002AF60D /* CustomColors.swift in Sources */,
+				7FB0D8F41BEE1A650009E5E6 /* KADescriptionTableViewCell.swift in Sources */,
 				7FC30AE71BED645900BFA883 /* KAItem.swift in Sources */,
 				7FC30AE41BED5CB800BFA883 /* KACollectionViewCell.swift in Sources */,
-				7FB16CBD1BED7495002AF60D /* KADetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,11 +537,14 @@
 			baseConfigurationReference = C0350D757714742C6EB68225 /* Pods-bitspls.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = bitspls/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitpls.bitspls;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "bitspls/bitspls-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -532,11 +553,13 @@
 			baseConfigurationReference = 137DA4DD855E8B0171DA91ED /* Pods-bitspls.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = bitspls/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitpls.bitspls;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "bitspls/bitspls-Bridging-Header.h";
 			};
 			name = Release;
 		};

@@ -84,11 +84,13 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-bitspls/APParallaxHeader.framework"
   install_framework "Pods-bitspls/Alamofire.framework"
   install_framework "Pods-bitspls/AlamofireImage.framework"
   install_framework "Pods-bitspls/Argo.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-bitspls/APParallaxHeader.framework"
   install_framework "Pods-bitspls/Alamofire.framework"
   install_framework "Pods-bitspls/AlamofireImage.framework"
   install_framework "Pods-bitspls/Argo.framework"

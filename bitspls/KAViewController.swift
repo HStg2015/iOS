@@ -38,7 +38,7 @@ class KAViewController: UICollectionViewController {
         
         switch identifier {
         case Storyboard.DetailSegue:
-            guard let detailVC = segue.destinationViewController as? KADetailViewController else { break }
+            guard let detailVC = segue.destinationViewController as? KADetailTableViewController else { break }
             detailVC.item = cell.item
         default: break
         }
