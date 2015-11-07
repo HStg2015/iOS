@@ -7,13 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7FB16CBD1BED7495002AF60D /* KADetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB16CBC1BED7495002AF60D /* KADetailViewController.swift */; };
 		7FC30AB41BED567800BFA883 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC30AB31BED567800BFA883 /* AppDelegate.swift */; };
-		7FC30AB61BED567800BFA883 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC30AB51BED567800BFA883 /* ViewController.swift */; };
+		7FC30AB61BED567800BFA883 /* KAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC30AB51BED567800BFA883 /* KAViewController.swift */; };
 		7FC30AB91BED567800BFA883 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FC30AB71BED567800BFA883 /* Main.storyboard */; };
 		7FC30ABB1BED567800BFA883 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FC30ABA1BED567800BFA883 /* Assets.xcassets */; };
 		7FC30ABE1BED567800BFA883 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FC30ABC1BED567800BFA883 /* LaunchScreen.storyboard */; };
 		7FC30AC91BED567800BFA883 /* bitsplsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC30AC81BED567800BFA883 /* bitsplsTests.swift */; };
 		7FC30AD41BED567800BFA883 /* bitsplsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC30AD31BED567800BFA883 /* bitsplsUITests.swift */; };
+		7FC30AE41BED5CB800BFA883 /* KACollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC30AE31BED5CB800BFA883 /* KACollectionViewCell.swift */; };
+		7FC30AE71BED645900BFA883 /* KAItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC30AE61BED645900BFA883 /* KAItem.swift */; };
+		917F24E7CCEB3EFDD83ACA0D /* Pods_bitspls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6C8F5C26D2AD22B800A05B /* Pods_bitspls.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +38,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		137DA4DD855E8B0171DA91ED /* Pods-bitspls.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bitspls.release.xcconfig"; path = "Pods/Target Support Files/Pods-bitspls/Pods-bitspls.release.xcconfig"; sourceTree = "<group>"; };
+		5D6C8F5C26D2AD22B800A05B /* Pods_bitspls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bitspls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FB16CBC1BED7495002AF60D /* KADetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KADetailViewController.swift; sourceTree = "<group>"; };
 		7FC30AB01BED567700BFA883 /* bitspls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bitspls.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FC30AB31BED567800BFA883 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7FC30AB51BED567800BFA883 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7FC30AB51BED567800BFA883 /* KAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAViewController.swift; sourceTree = "<group>"; };
 		7FC30AB81BED567800BFA883 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7FC30ABA1BED567800BFA883 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7FC30ABD1BED567800BFA883 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +54,9 @@
 		7FC30ACF1BED567800BFA883 /* bitsplsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bitsplsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FC30AD31BED567800BFA883 /* bitsplsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bitsplsUITests.swift; sourceTree = "<group>"; };
 		7FC30AD51BED567800BFA883 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7FC30AE31BED5CB800BFA883 /* KACollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KACollectionViewCell.swift; sourceTree = "<group>"; };
+		7FC30AE61BED645900BFA883 /* KAItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAItem.swift; sourceTree = "<group>"; };
+		C0350D757714742C6EB68225 /* Pods-bitspls.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bitspls.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bitspls/Pods-bitspls.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				917F24E7CCEB3EFDD83ACA0D /* Pods_bitspls.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +92,8 @@
 				7FC30AC71BED567800BFA883 /* bitsplsTests */,
 				7FC30AD21BED567800BFA883 /* bitsplsUITests */,
 				7FC30AB11BED567700BFA883 /* Products */,
+				DA3A9F8E7027700C6BFDCA86 /* Pods */,
+				CD7FB525C7620CC93BC319E3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,12 +110,10 @@
 		7FC30AB21BED567800BFA883 /* bitspls */ = {
 			isa = PBXGroup;
 			children = (
-				7FC30AB31BED567800BFA883 /* AppDelegate.swift */,
-				7FC30AB51BED567800BFA883 /* ViewController.swift */,
 				7FC30AB71BED567800BFA883 /* Main.storyboard */,
-				7FC30ABA1BED567800BFA883 /* Assets.xcassets */,
-				7FC30ABC1BED567800BFA883 /* LaunchScreen.storyboard */,
-				7FC30ABF1BED567800BFA883 /* Info.plist */,
+				7FC30AE51BED5CC000BFA883 /* UI */,
+				7FC30AE81BED645E00BFA883 /* Model */,
+				7FC30AE11BED5BE600BFA883 /* Supporting files */,
 			);
 			path = bitspls;
 			sourceTree = "<group>";
@@ -125,6 +136,60 @@
 			path = bitsplsUITests;
 			sourceTree = "<group>";
 		};
+		7FC30AE11BED5BE600BFA883 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				7FC30AB31BED567800BFA883 /* AppDelegate.swift */,
+				7FC30ABA1BED567800BFA883 /* Assets.xcassets */,
+				7FC30ABC1BED567800BFA883 /* LaunchScreen.storyboard */,
+				7FC30ABF1BED567800BFA883 /* Info.plist */,
+			);
+			name = "Supporting files";
+			sourceTree = "<group>";
+		};
+		7FC30AE21BED5C0800BFA883 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7FC30AB51BED567800BFA883 /* KAViewController.swift */,
+				7FB16CBC1BED7495002AF60D /* KADetailViewController.swift */,
+			);
+			name = "View Controller";
+			sourceTree = "<group>";
+		};
+		7FC30AE51BED5CC000BFA883 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				7FC30AE21BED5C0800BFA883 /* View Controller */,
+				7FC30AE31BED5CB800BFA883 /* KACollectionViewCell.swift */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		7FC30AE81BED645E00BFA883 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7FC30AE61BED645900BFA883 /* KAItem.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		CD7FB525C7620CC93BC319E3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5D6C8F5C26D2AD22B800A05B /* Pods_bitspls.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DA3A9F8E7027700C6BFDCA86 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C0350D757714742C6EB68225 /* Pods-bitspls.debug.xcconfig */,
+				137DA4DD855E8B0171DA91ED /* Pods-bitspls.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +197,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7FC30AD81BED567800BFA883 /* Build configuration list for PBXNativeTarget "bitspls" */;
 			buildPhases = (
+				7314BBCAEBE04BF2BDDD18F0 /* Check Pods Manifest.lock */,
 				7FC30AAC1BED567700BFA883 /* Sources */,
 				7FC30AAD1BED567700BFA883 /* Frameworks */,
 				7FC30AAE1BED567700BFA883 /* Resources */,
+				2F6FCEAA0680D9B3FDB2035E /* Embed Pods Frameworks */,
+				D731A30773553E9182B916DC /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -251,13 +319,64 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2F6FCEAA0680D9B3FDB2035E /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-bitspls/Pods-bitspls-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7314BBCAEBE04BF2BDDD18F0 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D731A30773553E9182B916DC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-bitspls/Pods-bitspls-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7FC30AAC1BED567700BFA883 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FC30AB61BED567800BFA883 /* ViewController.swift in Sources */,
+				7FC30AB61BED567800BFA883 /* KAViewController.swift in Sources */,
 				7FC30AB41BED567800BFA883 /* AppDelegate.swift in Sources */,
+				7FC30AE71BED645900BFA883 /* KAItem.swift in Sources */,
+				7FC30AE41BED5CB800BFA883 /* KACollectionViewCell.swift in Sources */,
+				7FB16CBD1BED7495002AF60D /* KADetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,9 +516,11 @@
 		};
 		7FC30AD91BED567800BFA883 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0350D757714742C6EB68225 /* Pods-bitspls.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = bitspls/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitpls.bitspls;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -408,9 +529,11 @@
 		};
 		7FC30ADA1BED567800BFA883 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 137DA4DD855E8B0171DA91ED /* Pods-bitspls.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = bitspls/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitpls.bitspls;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -484,6 +607,7 @@
 				7FC30ADA1BED567800BFA883 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7FC30ADB1BED567800BFA883 /* Build configuration list for PBXNativeTarget "bitsplsTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +616,7 @@
 				7FC30ADD1BED567800BFA883 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7FC30ADE1BED567800BFA883 /* Build configuration list for PBXNativeTarget "bitsplsUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +625,7 @@
 				7FC30AE01BED567800BFA883 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
