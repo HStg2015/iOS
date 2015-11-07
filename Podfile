@@ -7,6 +7,7 @@ target 'bitspls' do
 pod 'Alamofire', '~> 3.1'
 pod 'AlamofireImage', '~> 2.1'
 pod 'Argo', '~> 2.2'
+pod 'Curry', '~> 1.4'
 pod 'APParallaxHeader', '~> 0.1'
 end
 
