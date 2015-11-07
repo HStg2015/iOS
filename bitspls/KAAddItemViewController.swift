@@ -48,6 +48,25 @@ class KAAddItemViewController: UIViewController, UITextFieldDelegate, UIImagePic
         self.navigationController?.setNeedsStatusBarAppearanceUpdate()
     }
 
+    override func viewDidLayoutSubviews() {
+        
+        self.scrollView.scrollEnabled = true
+        var contentHeight:CGFloat = 0.0
+        
+        let subViews = self.scrollView.subviews
+        for subview in subViews{
+            
+            if subview.frame.origin.y + subview.frame.size.height > contentHeight {
+                
+                contentHeight = subview.frame.origin.y + subview.frame.size.height
+            }
+        }
+        
+        contentHeight += 70
+        
+        self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, contentHeight)
+    }
+    
     /*
     // MARK: - Navigation
 
