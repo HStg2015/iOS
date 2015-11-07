@@ -10,6 +10,16 @@ import UIKit
 
 class KAViewController: UICollectionViewController {
     
+    // IBOutlets:
+    @IBOutlet var addBarButtonItem: UIBarButtonItem!
+    
+    // IBActions:
+    @IBAction func addAction(sender: AnyObject) {
+    }
+    
+    
+    
+    
     private struct Storyboard {
         static let KACell = "bitspls.ka.cell"
         static let DetailSegue = "bitspls.ka.detail.segue"
@@ -18,6 +28,7 @@ class KAViewController: UICollectionViewController {
     lazy var testData: [KAItem] = {
         return (0...20).map { KAItem(test: "Test \($0)") }
     }()
+    
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return testData.count
     }
@@ -43,8 +54,15 @@ class KAViewController: UICollectionViewController {
         default: break
         }
     }
+    
     override func viewDidLoad() {
-        self.navigationController?.navigationBar.backgroundColor = UIColor.bitsplsOrangeBright()
+       
+    }
+    
+    func setupStatusBar(){
+        self.navigationController?.navigationBar.barTintColor = UIColor.bitsplsOrangeBright()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+      //  self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
     }
 }
 

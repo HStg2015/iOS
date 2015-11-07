@@ -123,8 +123,15 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Kleinanzeigen" id="J0g-cV-7KS">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="NAr-FS-d7s"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="NAr-FS-d7s">
+                            <connections>
+                                <action selector="addAction:" destination="rbC-dj-4rw" id="6JB-lu-ZYh"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addBarButtonItem" destination="NAr-FS-d7s" id="phu-fy-OXi"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ldr-hr-Eyo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
