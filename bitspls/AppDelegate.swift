@@ -13,9 +13,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    let vc = KAViewController() as UIViewController
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        if let viewController = self.window?.rootViewController as? KAViewController{
+            
+            self.vc.navigationController?.navigationBar.barTintColor = UIColor.bitsplsOrangeBright()
+            self.vc.navigationController?.navigationBar.barStyle = UIBarStyle.Black
+            self.vc.navigationController?.setNeedsStatusBarAppearanceUpdate()
+        }
+        
         return true
     }
 

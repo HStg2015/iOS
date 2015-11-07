@@ -17,9 +17,6 @@ class KAViewController: UICollectionViewController {
     @IBAction func addAction(sender: AnyObject) {
     }
     
-    
-    
-    
     private struct Storyboard {
         static let KACell = "bitspls.ka.cell"
         static let DetailSegue = "bitspls.ka.detail.segue"
@@ -56,13 +53,16 @@ class KAViewController: UICollectionViewController {
     }
     
     override func viewDidLoad() {
-       
+        setupNavigationBar()
+        // Sets up the navigation bar
     }
     
-    func setupStatusBar(){
+    func setupNavigationBar(){
         self.navigationController?.navigationBar.barTintColor = UIColor.bitsplsOrangeBright()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-      //  self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
+        self.navigationController?.setNeedsStatusBarAppearanceUpdate()
     }
 }
 
