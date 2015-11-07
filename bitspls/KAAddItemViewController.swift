@@ -95,7 +95,7 @@ class KAAddItemViewController: UIViewController, UITextFieldDelegate, UIImagePic
         
             self.thumbnailImage = image
             self.thumbnailURL = ""
-            self.thumbnailView.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+          //  self.thumbnailView.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
             self.thumbnailView.setBackgroundImage(self.thumbnailImage, forState: UIControlState.Normal)
             self.thumbnailView.setTitle("", forState: UIControlState.Normal)
         
