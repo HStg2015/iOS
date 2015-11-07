@@ -21,7 +21,7 @@ class KADetailTableViewController: UITableViewController {
         case Title(String)
         case Description(text: String)
         case Detail(details: [(String, String)])
-        case Map(region: MKCoordinateRegion)
+        case Map(center: CLLocationCoordinate2D)
         
         var rows: Int {
             switch self {
@@ -51,13 +51,44 @@ class KADetailTableViewController: UITableViewController {
     }
     
     
-    var item: KAItem?
+    var item: KAItem? {
+        didSet {
+            guard let newItem = self.item else { return }
+            sections = [.Title(newItem.title), .Description(text: newItem.description),
+                .Detail(details: newItem.details)]
+            let mapRequest = MKLocalSearchRequest()
+            mapRequest.naturalLanguageQuery = item?.city
+            let search = MKLocalSearch(request: mapRequest)
+            search.startWithCompletionHandler { response, error in
+                guard let mapItem = response?.mapItems.first,
+                    loc = mapItem.placemark.location else {
+                        print(error)
+                        return
+                }
+                self.sections.append(.Map(center: loc.coordinate))
+                self.tableView.beginUpdates()
+                self.tableView.insertSections(NSIndexSet(index: self.sections.count - 1), withRowAnimation: .Bottom)
+                self.tableView.endUpdates()
+                
+                //                NSOperationQueue.mainQueue().addOperationWithBlock {
+                //                    options.size = CGSize(width: self.tableView.bounds.width, height: cell.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height)
+                //                    let snapshotter = MKMapSnapshotter(options: options)
+                //                    snapshotter.startWithCompletionHandler { snapshot, error in
+                //                        guard let mapSnapshot = snapshot else {
+                //                            print(error)
+                //                            return
+                //                        }
+                //                        NSOperationQueue.mainQueue().addOperationWithBlock {
+                //
+                //
+                //                        }
+                //                    }
+                //                }
+            }
+        }
+    }
     
-    private lazy var sections: [Section] = {
-        guard let newItem = self.item else { return [] }
-        return [.Title(newItem.title), .Description(text: newItem.description),
-            .Detail(details: newItem.details)]
-    }()
+    private var sections: [Section] = []
     
     
     override func viewDidLoad() {
@@ -94,6 +125,8 @@ class KADetailTableViewController: UITableViewController {
         case (.Detail(let details), let detailCell as KADetailTableViewCell):
             detailCell.titleLabel.text = details[indexPath.row].0
             detailCell.nameLabel.text = details[indexPath.row].1
+        case (.Map(let loc), let mapCell as KAMapTableViewCell):
+            mapCell.coordiante = loc
         default: break
         }
         
