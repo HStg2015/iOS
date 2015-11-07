@@ -19,7 +19,7 @@ import UIKit
     */
 
     
-    @IBInspectable let paddingSide: CGFloat = 5.0
+    @IBInspectable let paddingSide: CGFloat = 10.0
     
     var padding: UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: paddingSide, bottom: 0, right: paddingSide)

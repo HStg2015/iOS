@@ -8,7 +8,7 @@
 
 import UIKit
 
-class KAAddItemViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate {
+class KAAddItemViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -18,8 +18,20 @@ class KAAddItemViewController: UIViewController, UITextFieldDelegate, UIImagePic
     @IBOutlet weak var plzField: UITextField!
     @IBOutlet weak var phoneField: UITextField!
     @IBOutlet weak var thumbnailView: UIButton!
+    var thumbnailImage:UIImage?
+    var thumbnailURL:String = ""
 
 
+    @IBAction func photoAction(sender: AnyObject) {
+        let picker:UIImagePickerController = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        picker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        
+        self.presentViewController(picker, animated: true, completion: nil)
+        
+    }
+    
     @IBAction func cancelAction(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -34,6 +46,16 @@ class KAAddItemViewController: UIViewController, UITextFieldDelegate, UIImagePic
         
         setupStatusBar()
         
+        
+        if let image = thumbnailImage {
+            
+            self.thumbnailView.setBackgroundImage(self.thumbnailImage, forState: UIControlState.Normal)
+            self.thumbnailView.setTitle("", forState: UIControlState.Normal)
+            
+        } else {
+            
+            print("No image yet!", terminator: "")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,7 +89,22 @@ class KAAddItemViewController: UIViewController, UITextFieldDelegate, UIImagePic
         
         self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, contentHeight)
     }
+
     
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+        
+            self.thumbnailImage = image
+            self.thumbnailURL = ""
+            self.thumbnailView.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+            self.thumbnailView.setBackgroundImage(self.thumbnailImage, forState: UIControlState.Normal)
+            self.thumbnailView.setTitle("", forState: UIControlState.Normal)
+        
+        picker.dismissViewControllerAnimated(true, completion: nil)
+            }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        picker.dismissViewControllerAnimated(true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 
