@@ -8,7 +8,7 @@
 
 import UIKit
 
-class KAAddItemTextField: UITextField {
+@IBDesignable class KAAddItemTextField: UITextField {
 
     /*
     // Only override drawRect: if you perform custom drawing.
@@ -19,8 +19,11 @@ class KAAddItemTextField: UITextField {
     */
 
     
-    let padding = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5);
+    @IBInspectable let paddingSide: CGFloat = 5.0
     
+    var padding: UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: paddingSide, bottom: 0, right: paddingSide)
+    }
     override func textRectForBounds(bounds: CGRect) -> CGRect {
         return self.newBounds(bounds)
     }
