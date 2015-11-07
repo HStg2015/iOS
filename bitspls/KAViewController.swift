@@ -43,5 +43,8 @@ class KAViewController: UICollectionViewController {
         default: break
         }
     }
+    override func viewDidLoad() {
+        self.navigationController?.navigationBar.backgroundColor = UIColor.bitsplsOrangeBright()
+    }
 }
 

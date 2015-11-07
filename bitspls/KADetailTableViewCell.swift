@@ -12,4 +12,5 @@ class KADetailTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    
 }

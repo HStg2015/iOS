@@ -25,7 +25,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HKG-SI-KDy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="245" y="337"/>
+            <point key="canvasLocation" x="203" y="559"/>
         </scene>
         <!--Kleinanzeigen-->
         <scene sceneID="4uI-kq-Bvr">
@@ -238,7 +238,7 @@
             </objects>
             <point key="canvasLocation" x="926" y="237"/>
         </scene>
-        <!--View Controller-->
+        <!--Helfen-->
         <scene sceneID="9Jz-ax-gii">
             <objects>
                 <viewController id="tTw-LW-YTV" sceneMemberID="viewController">
@@ -247,15 +247,16 @@
                         <viewControllerLayoutGuide type="bottom" id="7SM-q9-pHY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="q3F-zK-zv1">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="rMA-LX-GoU"/>
+                    <navigationItem key="navigationItem" title="Helfen" id="rMA-LX-GoU"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zYP-sh-Njm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1738" y="903"/>
+            <point key="canvasLocation" x="1738.5" y="902.5"/>
         </scene>
         <!--Helfen-->
         <scene sceneID="Qsw-Ic-qIh">
