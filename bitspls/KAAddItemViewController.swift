@@ -33,6 +33,7 @@ class KAAddItemViewController: UIViewController, UITextFieldDelegate, UIImagePic
         // Do any additional setup after loading the view.
         
         setupStatusBar()
+        
     }
 
     override func didReceiveMemoryWarning() {
