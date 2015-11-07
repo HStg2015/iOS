@@ -226,11 +226,11 @@
             </objects>
             <point key="canvasLocation" x="2480" y="243"/>
         </scene>
-        <!--Item-->
+        <!--Kleinanzeigen-->
         <scene sceneID="mLd-rO-4Wd">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="y0D-21-fVo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="0Qq-HT-cZa"/>
+                    <tabBarItem key="tabBarItem" title="Kleinanzeigen" id="0Qq-HT-cZa"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vRP-Qc-X9S">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -248,7 +248,7 @@
         <!--Helfen-->
         <scene sceneID="9Jz-ax-gii">
             <objects>
-                <viewController id="tTw-LW-YTV" sceneMemberID="viewController">
+                <viewController id="tTw-LW-YTV" customClass="IHViewController" customModule="bitspls" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Jf3-Ln-BxC"/>
                         <viewControllerLayoutGuide type="bottom" id="7SM-q9-pHY"/>
