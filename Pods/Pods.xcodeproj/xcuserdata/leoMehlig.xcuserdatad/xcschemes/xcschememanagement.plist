@@ -14,11 +14,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>AlamofireImage.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Argo.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -62,7 +57,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0E5776C210CCAB1CBC973B367BB6BCAB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1ABA1364F52B400F9AB0D9C1C909F3B1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1CED3CF2D7D9C968272300419FC47D44</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -77,6 +82,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>39060C5EC2C1B3C3B8979AE08F01A6BB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>432ECC54282C84882B482CCB4CF227FC</key>
 		<dict>
 			<key>primary</key>
@@ -87,27 +97,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5D83B3690EEFF392DF730B105188C042</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A1BF58736B6CCECB5DB30E2108366143</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D4E73EDCBA4806F41DB0F36EAD0F620D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DEEDA103AD2AA51ED9F033B0B721589E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F3193F5C61215D712D562071B1C11648</key>
+		<key>65D7528664B9721FBFF22095518D7899</key>
 		<dict>
 			<key>primary</key>
 			<true/>
