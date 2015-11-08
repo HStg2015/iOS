@@ -88,12 +88,22 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-bitspls/Alamofire.framework"
   install_framework "Pods-bitspls/AlamofireImage.framework"
   install_framework "Pods-bitspls/Argo.framework"
+  install_framework "Pods-bitspls/BusyNavigationBar.framework"
   install_framework "Pods-bitspls/Curry.framework"
+  install_framework "Pods-bitspls/Eureka.framework"
+  install_framework "Pods-bitspls/Realm.framework"
+  install_framework "Pods-bitspls/RealmSwift.framework"
+  install_framework "Pods-bitspls/SDWebImage.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-bitspls/APParallaxHeader.framework"
   install_framework "Pods-bitspls/Alamofire.framework"
   install_framework "Pods-bitspls/AlamofireImage.framework"
   install_framework "Pods-bitspls/Argo.framework"
+  install_framework "Pods-bitspls/BusyNavigationBar.framework"
   install_framework "Pods-bitspls/Curry.framework"
+  install_framework "Pods-bitspls/Eureka.framework"
+  install_framework "Pods-bitspls/Realm.framework"
+  install_framework "Pods-bitspls/RealmSwift.framework"
+  install_framework "Pods-bitspls/SDWebImage.framework"
 fi

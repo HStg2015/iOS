@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bitspls/KAItem.swift"
-            timestampString = "468635653.861392"
+            timestampString = "468664900.804138"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "KAItem"
             landmarkType = "3">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bitspls/KAItem.swift"
-            timestampString = "468635653.861392"
+            timestampString = "468664900.804138"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "KAItem"
             landmarkType = "3">
             <Locations>
@@ -89,12 +89,188 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bitspls/KAModel.swift"
-            timestampString = "468635653.861392"
+            timestampString = "468679155.433971"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "sortInCategories(_:categories:)"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "saveItem(_:description:category:location:phone:mail:image:completion:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "bitspls/KAModel.swift"
+            timestampString = "468679155.433971"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "saveItem(_:description:category:location:phone:mail:image:completion:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/Eureka/Source/Rows.swift"
+            timestampString = "468651669.818164"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "528"
+            endingLineNumber = "528"
+            landmarkName = "customUpdateCell()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/Eureka/Source/Core.swift"
+            timestampString = "468651828.174896"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1133"
+            endingLineNumber = "1133"
+            landmarkName = "RowOf"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "bitspls/KAModel.swift"
+            timestampString = "468679155.433971"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "saveItem(_:description:category:location:phone:mail:image:completion:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "bitspls/KAModel.swift"
+            timestampString = "468664687.436775"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "loadItems(_:error:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static bitspls.KAModel.loadItems (bitspls.KAModel.Type)((items : Swift.Array&lt;(bitspls.KAItem.Category, Swift.Array&lt;bitspls.KAItem&gt;)&gt;, add : Swift.Bool) -&gt; (), error : (Swift.Optional&lt;Swift.ErrorType&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "bitspls"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leoMehlig/Developer/Hackathon/iOS/bitspls/KAModel.swift"
+                  timestampString = "468675541.517744"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static bitspls.KAModel.(loadItems (bitspls.KAModel.Type) -&gt; ((items : Swift.Array&lt;(bitspls.KAItem.Category, Swift.Array&lt;bitspls.KAItem&gt;)&gt;, add : Swift.Bool) -&gt; (), error : (Swift.Optional&lt;Swift.ErrorType&gt;) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "bitspls"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leoMehlig/Developer/Hackathon/iOS/bitspls/KAModel.swift"
+                  timestampString = "468675541.518072"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "bitspls/KAModel.swift"
+            timestampString = "468679155.433971"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "loadItems(_:error:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static bitspls.KAModel.(loadItems (bitspls.KAModel.Type) -&gt; ((items : Swift.Array&lt;(bitspls.KAItem.Category, Swift.Array&lt;bitspls.KAItem&gt;)&gt;, add : Swift.Bool) -&gt; (), error : (Swift.Optional&lt;Swift.ErrorType&gt;) -&gt; ()) -&gt; ()).(closure #6)"
+                  moduleName = "bitspls"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leoMehlig/Developer/Hackathon/iOS/bitspls/KAModel.swift"
+                  timestampString = "468677888.457559"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "1100">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static bitspls.KAModel.(loadItems (bitspls.KAModel.Type) -&gt; ((items : Swift.Array&lt;(bitspls.KAItem.Category, Swift.Array&lt;bitspls.KAItem&gt;)&gt;, add : Swift.Bool) -&gt; (), error : (Swift.Optional&lt;Swift.ErrorType&gt;) -&gt; ()) -&gt; ()).(closure #6).(closure #1)"
+                  moduleName = "bitspls"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leoMehlig/Developer/Hackathon/iOS/bitspls/KAModel.swift"
+                  timestampString = "468677888.458772"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "232">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "bitspls/KAAddFormViewController.swift"
+            timestampString = "468679610.39788"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "done(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -105,12 +281,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bitspls/KAViewController.swift"
-            timestampString = "468635841.517439"
+            timestampString = "468679474.465397"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "collectionView(_:numberOfItemsInSection:)"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "loadItems()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -120,14 +296,62 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "bitspls/KACollectionViewCell.swift"
-            timestampString = "468635872.232885"
+            filePath = "bitspls/KAViewController.swift"
+            timestampString = "468679474.465397"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "KACollectionViewCell"
-            landmarkType = "3">
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "loadItems()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "bitspls.KAViewController.(loadItems (bitspls.KAViewController) -&gt; () -&gt; ()).(closure #1)"
+                  moduleName = "bitspls"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leoMehlig/Developer/Hackathon/iOS/bitspls/KAViewController.swift"
+                  timestampString = "468678516.868751"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "420">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "bitspls.KAViewController.(loadItems (bitspls.KAViewController) -&gt; () -&gt; ()).(closure #1).(closure #1)"
+                  moduleName = "bitspls"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leoMehlig/Developer/Hackathon/iOS/bitspls/KAViewController.swift"
+                  timestampString = "468678516.869066"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "bitspls/KAViewController.swift"
+            timestampString = "468679474.465397"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "loadItems()"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

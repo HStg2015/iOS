@@ -8,17 +8,12 @@
 
 import UIKit
 import MapKit
-import AlamofireImage
+import SDWebImage
 import MessageUI
 
 class KADetailTableViewController: UITableViewController, MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate {
     
-    private struct CellIdentifier {
-        static let Description = "bitspls.cell.description"
-        static let Phone = "bitspls.cell.phone"
-    }
-    
-    
+   
     private enum Section {
         case Title(String)
         case Description(text: String)
@@ -56,6 +51,7 @@ class KADetailTableViewController: UITableViewController, MFMessageComposeViewCo
     
     var item: KAItem? {
         didSet {
+            print("iten set")
             guard let newItem = item else { return }
             sections = [.Title(newItem.title), .Description(text: newItem.description),
                 .Detail(details: newItem.detailsForController(self))]
@@ -69,7 +65,8 @@ class KADetailTableViewController: UITableViewController, MFMessageComposeViewCo
                         return
                 }
                 self.sections.append(.Map(center: loc.coordinate))
-                self.tableView.beginUpdates()
+                //self.tableView.reloadData()
+               self.tableView.beginUpdates()
                 self.tableView.insertSections(NSIndexSet(index: self.sections.count - 1), withRowAnimation: .Bottom)
                 self.tableView.endUpdates()
             }
@@ -79,13 +76,15 @@ class KADetailTableViewController: UITableViewController, MFMessageComposeViewCo
     private var sections: [Section] = []
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.addParallaxWithImage(UIImage(named: "placeholder"), andHeight: 200)
         if let url = item?.imageURL {
-            self.tableView.parallaxView.imageView.af_setImageWithURL(url, placeholderImage: UIImage(named: "placeholder"))
+            self.tableView.parallaxView.imageView.sd_setImageWithURL(url, placeholderImage: UIImage(named: "placeholder"))
         }
+        
         self.title = item?.title
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -170,11 +169,12 @@ class KADetailTableViewController: UITableViewController, MFMessageComposeViewCo
 
 extension KAItem {
     func detailsForController(controller: KADetailTableViewController) -> [KADetail] {
-        return [KADetail(title: "Location", text: self.city),
-            KADetail(title: "E-Mail", text: self.email, icon: UIImage(named: "mail"), action: MFMailComposeViewController.canSendMail() ? controller.composeMail : nil),
-            self.phone.map { KADetail(title: "Telefon", text: $0, icon: UIImage(named: "phone"),
-                action: (self.phoneURL.map { UIApplication.sharedApplication().canOpenURL($0)  } ?? false) ? controller.makeCall : nil, icon2: UIImage(named: "message"),
-                action2: MFMessageComposeViewController.canSendText() ? controller.writeMessage : nil) }].flatMap { $0 }
+        let loc = KADetail(title: "Location", text: self.city)
+        let mail = KADetail(title: "E-Mail", text: self.email, icon: UIImage(named: "mail"), action: MFMailComposeViewController.canSendMail() ? controller.composeMail : nil)
+        let phone = KADetail(title: "Telefon", text: self.phone, icon: UIImage(named: "phone"),
+            action: (self.phoneURL.map { UIApplication.sharedApplication().canOpenURL($0)  } ?? false) ? controller.makeCall : nil, icon2: UIImage(named: "message"),
+            action2: MFMessageComposeViewController.canSendText() ? controller.writeMessage : nil)
+        return [loc, mail, phone].flatMap { $0 }
 
     }
     

@@ -30,23 +30,45 @@ class KAViewController: UICollectionViewController, UICollectionViewDelegateFlow
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        refreshControl.addTarget(self, action: Selector("loadItems"), forControlEvents: .ValueChanged)
+        refreshControl.addTarget(self, action: Selector("refreshItems"), forControlEvents: .ValueChanged)
         self.collectionView?.addSubview(refreshControl)
         self.collectionView?.alwaysBounceVertical = true
         
         self.tabBarController?.tabBarItem.title = "Kleinanzeigen"
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadItems", name: "addedItem", object: nil)
         updateItemSizeForSizeClass(self.traitCollection)
         setupNavigationBar()
         loadItems()
     }
     
     
+    func refreshItems() {
+        KAModel.clearItemCache()
+        loadItems()
+    }
+    
     func loadItems() {
         self.refreshControl.beginRefreshing()
-        KAModel.loadItems({
+        KAModel.loadItems({ (items, add) in
             self.refreshControl.endRefreshing()
-            self.items = $0
+            if add {
+                print(items.count)
+                print(items)
+                let t: [KAItem] = items.flatMap { $0.1 }
+                let sorted = t.reduce(self.items ?? []) {
+                    return KAModel.sortInCategories($1, categories: $0 ?? [])
+                    }.map {
+                        ($0.0, $0.1.sort {
+                            $0.date.earlierDate($1.date) == $0.date
+                            })
+                }
+
+                self.items = sorted
+            } else {
+                self.items = items
+                self.collectionView?.reloadData()
+
+            }
             }) { error in
                 print(error)
                 self.refreshControl.endRefreshing()
@@ -56,7 +78,7 @@ class KAViewController: UICollectionViewController, UICollectionViewDelegateFlow
         }
     }
     
-
+    
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return items?.count ?? 0
     }
@@ -72,6 +94,16 @@ class KAViewController: UICollectionViewController, UICollectionViewDelegateFlow
     }
     
     
+    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        if kind == UICollectionElementKindSectionHeader {
+            if let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "bitspls.ka.header", forIndexPath: indexPath) as? KAHeaderView,
+                category = self.items?[indexPath.section] {
+                    header.label.text = KAItem.Category.Strings[category.0.rawValue - 1]
+                    return header
+            }
+        }
+        return super.collectionView(collectionView, viewForSupplementaryElementOfKind: kind, atIndexPath: indexPath)
+    }
     
     override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         coordinator.animateAlongsideTransition({ ctx in
@@ -84,6 +116,7 @@ class KAViewController: UICollectionViewController, UICollectionViewDelegateFlow
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print("segue ´")
         guard let identifier = segue.identifier,
             cell = sender as? KACollectionViewCell else {
                 super.prepareForSegue(segue, sender: sender)
@@ -93,11 +126,13 @@ class KAViewController: UICollectionViewController, UICollectionViewDelegateFlow
         switch identifier {
         case Storyboard.DetailSegue:
             guard let detailVC = segue.destinationViewController as? KADetailTableViewController else { break }
-            detailVC.item = cell.item
+            if detailVC.item == nil {
+                detailVC.item = cell.item
+            }
         default: break
         }
     }
-  
+    
     
     func setupNavigationBar(){
         self.navigationController?.navigationBar.barTintColor = UIColor.bitsplsOrangeBright()
