@@ -22,7 +22,7 @@ class KAViewController: UICollectionViewController, UICollectionViewDelegateFlow
         static let DetailSegue = "bitspls.ka.detail.segue"
     }
     private let refreshControl = UIRefreshControl()
-    private var items: [KAItem]? {
+    private var items: [(KAItem.Category, [KAItem])]? {
         didSet {
             self.collectionView?.reloadData()
         }
@@ -46,21 +46,28 @@ class KAViewController: UICollectionViewController, UICollectionViewDelegateFlow
             self.items = $0
             }) { error in
                 print(error)
+                self.refreshControl.endRefreshing()
+                NSOperationQueue.mainQueue().addOperationWithBlock {
+                    
+                }
         }
     }
     
 
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return items?.count ?? 0
+    }
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return items?[section].1.count ?? 0
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.KACell, forIndexPath: indexPath)
-        guard let itemCell = cell as? KACollectionViewCell,
-                itemAry = self.items where itemAry.count > indexPath.row else { return cell }
-        itemCell.item = itemAry[indexPath.row]
+        guard let itemCell = cell as? KACollectionViewCell else { return cell }
+        itemCell.item = items?[indexPath.section].1[indexPath.row]
         return itemCell
     }
+    
     
     
     override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
