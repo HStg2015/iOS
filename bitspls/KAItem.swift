@@ -20,9 +20,33 @@ struct KAItem {
     let phone: String?
     let image: String?
     let timestamp: String
+    let categoryNumber: Int
     
     var imageURL: NSURL? {
         return self.image.flatMap { NSURL(string: $0) }
+    }
+    
+    var phoneURL: NSURL? {
+        let str = phone?.stringByRemovingPercentEncoding?.stringByReplacingOccurrencesOfString(" ", withString: "")
+        return str.flatMap {  NSURL(string: "tel://" + $0) }
+    }
+    
+    var category: Category {
+        return Category(rawValue: categoryNumber) ?? .Sonstiges
+    }
+    
+    private static let dateFormatter = NSDateFormatter()
+
+    var date: NSDate {
+        return KAItem.dateFormatter.dateFromString(self.timestamp) ?? NSDate()
+    }
+    
+    enum Category: Int {
+        case Elektronik = 1
+        case Spielzeuge = 2
+        case Kleidung = 3
+        case Möbel = 4
+        case Sonstiges = 5
     }
 }
 
@@ -37,6 +61,7 @@ extension KAItem: Decodable {
             <*> j <|? "telephone"
             <*> j <|? "image"
             <*> j <| "create_time"
+            <*> j <| "category"
         
     }
 }

@@ -11,6 +11,7 @@
 		7F31FFC41BEE16ED0031D728 /* KADetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F31FFC31BEE16ED0031D728 /* KADetailTableViewController.swift */; };
 		7F9B8F5B1BEE6D3100C6C721 /* KATitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9B8F5A1BEE6D3100C6C721 /* KATitleTableViewCell.swift */; };
 		7F9B8F5E1BEE77B000C6C721 /* KAMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9B8F5D1BEE77B000C6C721 /* KAMapTableViewCell.swift */; };
+		7F9B8F601BEE9E3900C6C721 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F9B8F5F1BEE9E3900C6C721 /* MessageUI.framework */; };
 		7FB0D8F41BEE1A650009E5E6 /* KADescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB0D8F31BEE1A650009E5E6 /* KADescriptionTableViewCell.swift */; };
 		7FB0D8FD1BEE2C7D0009E5E6 /* KADetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB0D8FC1BEE2C7D0009E5E6 /* KADetailTableViewCell.swift */; };
 		7FB0D8FF1BEE38AF0009E5E6 /* KAModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB0D8FE1BEE38AF0009E5E6 /* KAModel.swift */; };
@@ -51,6 +52,7 @@
 		7F31FFC31BEE16ED0031D728 /* KADetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KADetailTableViewController.swift; sourceTree = "<group>"; };
 		7F9B8F5A1BEE6D3100C6C721 /* KATitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KATitleTableViewCell.swift; sourceTree = "<group>"; };
 		7F9B8F5D1BEE77B000C6C721 /* KAMapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAMapTableViewCell.swift; sourceTree = "<group>"; };
+		7F9B8F5F1BEE9E3900C6C721 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		7FB0D8F31BEE1A650009E5E6 /* KADescriptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KADescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		7FB0D8F51BEE1CB10009E5E6 /* bitspls-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bitspls-Bridging-Header.h"; sourceTree = "<group>"; };
 		7FB0D8FC1BEE2C7D0009E5E6 /* KADetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KADetailTableViewCell.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F9B8F601BEE9E3900C6C721 /* MessageUI.framework in Frameworks */,
 				917F24E7CCEB3EFDD83ACA0D /* Pods_bitspls.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -207,6 +210,7 @@
 		CD7FB525C7620CC93BC319E3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7F9B8F5F1BEE9E3900C6C721 /* MessageUI.framework */,
 				5D6C8F5C26D2AD22B800A05B /* Pods_bitspls.framework */,
 			);
 			name = Frameworks;

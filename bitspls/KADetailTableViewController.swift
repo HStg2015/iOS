@@ -9,7 +9,9 @@
 import UIKit
 import MapKit
 import AlamofireImage
-class KADetailTableViewController: UITableViewController {
+import MessageUI
+
+class KADetailTableViewController: UITableViewController, MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate {
     
     private struct CellIdentifier {
         static let Description = "bitspls.cell.description"
@@ -20,7 +22,7 @@ class KADetailTableViewController: UITableViewController {
     private enum Section {
         case Title(String)
         case Description(text: String)
-        case Detail(details: [(String, String)])
+        case Detail(details: [KADetail])
         case Map(center: CLLocationCoordinate2D)
         
         var rows: Int {
@@ -44,6 +46,7 @@ class KADetailTableViewController: UITableViewController {
         var headerText: String? {
             switch self {
             case .Description(_): return "Beschreibung"
+            case .Map(_): return "Karte"
             default: return nil
             }
         }
@@ -53,9 +56,9 @@ class KADetailTableViewController: UITableViewController {
     
     var item: KAItem? {
         didSet {
-            guard let newItem = self.item else { return }
+            guard let newItem = item else { return }
             sections = [.Title(newItem.title), .Description(text: newItem.description),
-                .Detail(details: newItem.details)]
+                .Detail(details: newItem.detailsForController(self))]
             let mapRequest = MKLocalSearchRequest()
             mapRequest.naturalLanguageQuery = item?.city
             let search = MKLocalSearch(request: mapRequest)
@@ -69,21 +72,6 @@ class KADetailTableViewController: UITableViewController {
                 self.tableView.beginUpdates()
                 self.tableView.insertSections(NSIndexSet(index: self.sections.count - 1), withRowAnimation: .Bottom)
                 self.tableView.endUpdates()
-                
-                //                NSOperationQueue.mainQueue().addOperationWithBlock {
-                //                    options.size = CGSize(width: self.tableView.bounds.width, height: cell.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height)
-                //                    let snapshotter = MKMapSnapshotter(options: options)
-                //                    snapshotter.startWithCompletionHandler { snapshot, error in
-                //                        guard let mapSnapshot = snapshot else {
-                //                            print(error)
-                //                            return
-                //                        }
-                //                        NSOperationQueue.mainQueue().addOperationWithBlock {
-                //
-                //
-                //                        }
-                //                    }
-                //                }
             }
         }
     }
@@ -94,9 +82,9 @@ class KADetailTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.addParallaxWithImage(UIImage(), andHeight: 200)
+        self.tableView.addParallaxWithImage(UIImage(named: "placeholder"), andHeight: 200)
         if let url = item?.imageURL {
-            self.tableView.parallaxView.imageView.af_setImageWithURL(url)
+            self.tableView.parallaxView.imageView.af_setImageWithURL(url, placeholderImage: UIImage(named: "placeholder"))
         }
         self.title = item?.title
         tableView.estimatedRowHeight = 44.0
@@ -123,8 +111,8 @@ class KADetailTableViewController: UITableViewController {
         case (.Description(let text), let desCell as KADescriptionTableViewCell):
             desCell.label.text = text
         case (.Detail(let details), let detailCell as KADetailTableViewCell):
-            detailCell.titleLabel.text = details[indexPath.row].0
-            detailCell.nameLabel.text = details[indexPath.row].1
+            detailCell.detail = details[indexPath.row]
+            detailCell.viewController = self
         case (.Map(let loc), let mapCell as KAMapTableViewCell):
             mapCell.coordiante = loc
         default: break
@@ -145,11 +133,55 @@ class KADetailTableViewController: UITableViewController {
             }, completion: nil)
     }
     
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
+    
+    func composeMail() {
+        if let i = self.item where MFMailComposeViewController.canSendMail() {
+            let vc = MFMailComposeViewController()
+            vc.mailComposeDelegate = self
+                vc.setToRecipients([i.email])
+            vc.setSubject(i.title)
+            self.presentViewController(vc, animated: true, completion: nil)
+        }
+    }
+    
+    func makeCall() {
+        item?.phoneURL.map { UIApplication.sharedApplication().openURL($0) }
+    }
+    
+    func writeMessage() {
+        if let number = item?.phone where MFMessageComposeViewController.canSendText() {
+            let vc = MFMessageComposeViewController()
+            vc.messageComposeDelegate = self
+            vc.recipients = [number]
+            self.presentViewController(vc, animated: true, completion: nil)
+        }
+    }
+    
 }
 
 extension KAItem {
-    var details: [(String, String)] {
-        return [("Postleitzahl", self.city),
-            ("E-Mail", self.email), self.phone.map { ("Telefon", $0) }].flatMap { $0 }
+    func detailsForController(controller: KADetailTableViewController) -> [KADetail] {
+        return [KADetail(title: "Location", text: self.city),
+            KADetail(title: "E-Mail", text: self.email, icon: UIImage(named: "mail"), action: MFMailComposeViewController.canSendMail() ? controller.composeMail : nil),
+            self.phone.map { KADetail(title: "Telefon", text: $0, icon: UIImage(named: "phone"),
+                action: (self.phoneURL.map { UIApplication.sharedApplication().canOpenURL($0)  } ?? false) ? controller.makeCall : nil, icon2: UIImage(named: "message"),
+                action2: MFMessageComposeViewController.canSendText() ? controller.writeMessage : nil) }].flatMap { $0 }
+
     }
+    
+    
+    
 }
+
+
+
+
