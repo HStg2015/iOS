@@ -46,7 +46,11 @@ class KAViewController: UICollectionViewController, UICollectionViewDelegateFlow
         self.refreshControl.beginRefreshing()
         KAModel.loadItems({
             self.refreshControl.endRefreshing()
-            self.items = $0
+            if $0.add {
+                
+            } else {
+                self.items = $0.items
+            }
             }) { error in
                 print(error)
                 self.refreshControl.endRefreshing()
@@ -56,7 +60,7 @@ class KAViewController: UICollectionViewController, UICollectionViewDelegateFlow
         }
     }
     
-
+    
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return items?.count ?? 0
     }
@@ -107,7 +111,7 @@ class KAViewController: UICollectionViewController, UICollectionViewDelegateFlow
         default: break
         }
     }
-  
+    
     
     func setupNavigationBar(){
         self.navigationController?.navigationBar.barTintColor = UIColor.bitsplsOrangeBright()

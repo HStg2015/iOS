@@ -11,11 +11,38 @@ import Curry
 import RealmSwift
 
 
-//class KARealmItem: Object {
-//    let id: Int
-//    let title: String = ""
-//    let
-//}
+class KARealmItem: Object {
+    dynamic var id: Int = 0
+    dynamic var title: String = ""
+    dynamic var descriptionText: String = ""
+    dynamic var city: String = ""
+    dynamic var email: String = ""
+    dynamic var phone: String = ""
+    dynamic var image: String? = ""
+    dynamic var timestamp: String = ""
+    dynamic var categoryNumber: Int = 1
+
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+    
+    var item: KAItem {
+        get {
+            return KAItem(id: id, title: title, description: descriptionText, city: city, email: email, phone: phone, image: image, timestamp: timestamp, categoryNumber: categoryNumber)
+        }
+        set (i) {
+            id = i.id
+            title = i.title
+            descriptionText = i.description
+            city = i.city
+            email = i.email
+            phone = i.phone
+            image = i.image
+            timestamp = i.timestamp
+            categoryNumber = i.categoryNumber
+        }
+    }
+}
 
 struct KAItem {
     let id: Int
@@ -23,7 +50,7 @@ struct KAItem {
     let description: String
     let city: String
     let email: String
-    let phone: String?
+    let phone: String
     let image: String?
     let timestamp: String
     let categoryNumber: Int
@@ -33,7 +60,7 @@ struct KAItem {
     }
     
     var phoneURL: NSURL? {
-        let str = phone?.stringByRemovingPercentEncoding?.stringByReplacingOccurrencesOfString(" ", withString: "")
+        let str = phone.stringByRemovingPercentEncoding?.stringByReplacingOccurrencesOfString(" ", withString: "")
         return str.flatMap {  NSURL(string: "tel://" + $0) }
     }
     
@@ -67,7 +94,7 @@ extension KAItem: Decodable {
             <*> j <| "description"
             <*> j <| "city"
             <*> j <| "email"
-            <*> j <|? "telephone"
+            <*> j <| "telephone"
             <*> j <|? "image"
             <*> j <| "create_time"
             <*> j <| "category"

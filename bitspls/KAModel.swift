@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import Argo
+import RealmSwift
 
 struct KAModel {
     
@@ -17,9 +18,17 @@ struct KAModel {
         static let SimpleOffer = "simple_offer/"
     }
     
-    static func loadItems(completion: (items: [(KAItem.Category, [KAItem])]) -> Void, error: (ErrorType?) -> Void) {
-       
-        Alamofire.request(.GET, URL.Base + URL.SimpleOffer)
+    static func loadItems(completion: (items: [(KAItem.Category, [KAItem])], add: Bool) -> Void, error: (ErrorType?) -> Void) {
+        let lastItems = (try? Realm().objects(KARealmItem))?.map { $0.item }
+        let latest = lastItems?.reduce(lastItems?.first) {
+            let last = $1.date
+            
+            guard let first = $0?.date where first.laterDate(last) == last else { return $0 }
+            return $1
+            
+        }
+
+        Alamofire.request(.GET, URL.Base + URL.SimpleOffer, parameters: latest.map { ["ts" : $0.timestamp] })
             .responseJSON { response in
                 switch response.result {
                 case .Failure(let e): error(e)
@@ -37,7 +46,7 @@ struct KAModel {
                                     })
                         }
                         
-                        completion(items: sorted)
+                        completion(items: sorted, add: true)
                     }
                 }
         }

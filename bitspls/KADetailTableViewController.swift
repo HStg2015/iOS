@@ -164,11 +164,12 @@ class KADetailTableViewController: UITableViewController, MFMessageComposeViewCo
 
 extension KAItem {
     func detailsForController(controller: KADetailTableViewController) -> [KADetail] {
-        return [KADetail(title: "Location", text: self.city),
-            KADetail(title: "E-Mail", text: self.email, icon: UIImage(named: "mail"), action: MFMailComposeViewController.canSendMail() ? controller.composeMail : nil),
-            self.phone.map { KADetail(title: "Telefon", text: $0, icon: UIImage(named: "phone"),
-                action: (self.phoneURL.map { UIApplication.sharedApplication().canOpenURL($0)  } ?? false) ? controller.makeCall : nil, icon2: UIImage(named: "message"),
-                action2: MFMessageComposeViewController.canSendText() ? controller.writeMessage : nil) }].flatMap { $0 }
+        let loc = KADetail(title: "Location", text: self.city)
+        let mail = KADetail(title: "E-Mail", text: self.email, icon: UIImage(named: "mail"), action: MFMailComposeViewController.canSendMail() ? controller.composeMail : nil)
+        let phone = KADetail(title: "Telefon", text: self.phone, icon: UIImage(named: "phone"),
+            action: (self.phoneURL.map { UIApplication.sharedApplication().canOpenURL($0)  } ?? false) ? controller.makeCall : nil, icon2: UIImage(named: "message"),
+            action2: MFMessageComposeViewController.canSendText() ? controller.writeMessage : nil)
+        return [loc, mail, phone].flatMap { $0 }
 
     }
     
