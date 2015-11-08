@@ -18,3 +18,11 @@ Good question. donaid consits of two main parts: The view for people searching f
 **Press Image**:
 
 ![Press Image](https://raw.github.com/HStg2015/iOS/master/Image1.png "Press Image")
+
+**Donating UI**:
+
+![Donating UI](https://raw.github.com/HStg2015/iOS/master/Image3.png "Donating UI")
+
+**Donated goods UI**:
+
+![Donated goods UI](https://raw.github.com/HStg2015/iOS/master/Image2.png "Donated goods UI")
