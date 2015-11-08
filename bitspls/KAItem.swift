@@ -21,10 +21,6 @@ class KARealmItem: Object {
     dynamic var image: String? = ""
     dynamic var timestamp: String = ""
     dynamic var categoryNumber: Int = 1
-
-    override static func primaryKey() -> String? {
-        return "id"
-    }
     
     var item: KAItem {
         get {

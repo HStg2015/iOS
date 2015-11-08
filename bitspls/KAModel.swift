@@ -20,14 +20,24 @@ struct KAModel {
     
     static func loadItems(completion: (items: [(KAItem.Category, [KAItem])], add: Bool) -> Void, error: (ErrorType?) -> Void) {
         let lastItems = (try? Realm().objects(KARealmItem))?.map { $0.item }
+        let sortedItmes = lastItems?.reduce([]) {
+            return sortInCategories($1, categories: $0 ?? [])
+            }.map {
+                ($0.0, $0.1.sort {
+                    $0.date.earlierDate($1.date) == $0.date
+                    })
+        }
+        if let i = sortedItmes {
+            completion(items: i, add: false)
+        }
         let latest = lastItems?.reduce(lastItems?.first) {
             let last = $1.date
             
-            guard let first = $0?.date where first.laterDate(last) == last else { return $0 }
+            guard let first = $0?.date where first.earlierDate(last) == last else { return $0 }
             return $1
             
         }
-
+        
         Alamofire.request(.GET, URL.Base + URL.SimpleOffer, parameters: latest.map { ["ts" : $0.timestamp] })
             .responseJSON { response in
                 switch response.result {
@@ -38,11 +48,20 @@ struct KAModel {
                     case .Failure(let e):
                         error(e)
                     case .Success(let items):
+                        let realmItems: [KARealmItem] = items.map {
+                            let r = KARealmItem()
+                            r.item = $0
+                            return r
+                        }
+                        let realm = try? Realm()
+                        let _ = try? realm?.write {
+                            realm?.add(realmItems)
+                        }
                         let sorted = items.reduce([]) {
                             return sortInCategories($1, categories: $0 ?? [])
                             }.map {
                                 ($0.0, $0.1.sort {
-                                    $0.date.laterDate($1.date) == $0.date
+                                    $0.date.earlierDate($1.date) == $0.date
                                     })
                         }
                         
@@ -60,15 +79,15 @@ struct KAModel {
                 multipartFormData.appendBodyPart(data: title.dataUsingEncoding(NSUTF8StringEncoding)!, name: "title")
                 multipartFormData.appendBodyPart(data: description.dataUsingEncoding(NSUTF8StringEncoding)!, name: "description")
                 multipartFormData.appendBodyPart(data: "\(category)".dataUsingEncoding(NSUTF8StringEncoding)!, name: "category")
-                 multipartFormData.appendBodyPart(data: location.dataUsingEncoding(NSUTF8StringEncoding)!, name: "city")
-                 multipartFormData.appendBodyPart(data: phone.dataUsingEncoding(NSUTF8StringEncoding)!, name: "telephone")
-                 multipartFormData.appendBodyPart(data: mail.dataUsingEncoding(NSUTF8StringEncoding)!, name: "email")
+                multipartFormData.appendBodyPart(data: location.dataUsingEncoding(NSUTF8StringEncoding)!, name: "city")
+                multipartFormData.appendBodyPart(data: phone.dataUsingEncoding(NSUTF8StringEncoding)!, name: "telephone")
+                multipartFormData.appendBodyPart(data: mail.dataUsingEncoding(NSUTF8StringEncoding)!, name: "email")
                 if let i = image {
-                multipartFormData.appendBodyPart(data: UIImagePNGRepresentation(i)!, name: "image", fileName: "temp_image.png", mimeType: "image/png")
+                    multipartFormData.appendBodyPart(data: UIImagePNGRepresentation(i)!, name: "image", fileName: "temp_image.png", mimeType: "image/png")
                 } else {
                     multipartFormData.appendBodyPart(data: "".dataUsingEncoding(NSUTF8StringEncoding)!, name: "image")
                 }
-               
+                
             },
             encodingCompletion: { encodingResult in
                 switch encodingResult {

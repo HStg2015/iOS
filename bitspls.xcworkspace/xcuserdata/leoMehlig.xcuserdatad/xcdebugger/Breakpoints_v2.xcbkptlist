@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bitspls/KAItem.swift"
-            timestampString = "468660549.101552"
+            timestampString = "468664900.804138"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "KAItem"
             landmarkType = "3">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bitspls/KAItem.swift"
-            timestampString = "468660549.101552"
+            timestampString = "468664900.804138"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "KAItem"
             landmarkType = "3">
             <Locations>
@@ -89,11 +89,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bitspls/KAModel.swift"
-            timestampString = "468656920.31392"
+            timestampString = "468664826.461904"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "saveItem(_:description:category:location:phone:mail:image:completion:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -105,11 +105,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bitspls/KAViewController.swift"
-            timestampString = "468635841.517439"
+            timestampString = "468664640.734924"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "numberOfSectionsInCollectionView(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -121,11 +121,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bitspls/KAModel.swift"
-            timestampString = "468656136.35392"
+            timestampString = "468664826.461904"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "saveItem(_:description:category:location:phone:mail:image:completion:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -169,13 +169,61 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bitspls/KAModel.swift"
-            timestampString = "468656136.35392"
+            timestampString = "468664826.461904"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "saveItem(_:description:category:location:phone:mail:image:completion:)"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "bitspls/KAModel.swift"
+            timestampString = "468664687.436775"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "loadItems(_:error:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static bitspls.KAModel.loadItems (bitspls.KAModel.Type)((items : Swift.Array&lt;(bitspls.KAItem.Category, Swift.Array&lt;bitspls.KAItem&gt;)&gt;, add : Swift.Bool) -&gt; (), error : (Swift.Optional&lt;Swift.ErrorType&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "bitspls"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leoMehlig/Developer/Hackathon/iOS/bitspls/KAModel.swift"
+                  timestampString = "468664696.482019"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static bitspls.KAModel.(loadItems (bitspls.KAModel.Type) -&gt; ((items : Swift.Array&lt;(bitspls.KAItem.Category, Swift.Array&lt;bitspls.KAItem&gt;)&gt;, add : Swift.Bool) -&gt; (), error : (Swift.Optional&lt;Swift.ErrorType&gt;) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "bitspls"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leoMehlig/Developer/Hackathon/iOS/bitspls/KAModel.swift"
+                  timestampString = "468664696.482538"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
