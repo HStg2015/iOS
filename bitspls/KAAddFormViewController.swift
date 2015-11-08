@@ -17,7 +17,7 @@ class KAAddFormViewController: FormViewController {
         self.tableView?.addParallaxWithImage(UIImage(named: "placeholder"), andHeight: 150)
         form +++ Section()
             <<< ImageRow("image") {
-                $0.title = "Bild"
+                $0.title = "Bild hinzufügen ..."
                 }.onChange {
                     if let image = $0.value {
                         self.tableView?.addParallaxWithImage(image, andHeight: 150)
@@ -26,12 +26,12 @@ class KAAddFormViewController: FormViewController {
         
         form +++ Section()
             <<< TextFloatLabelRow("title") {
-                $0.title = "Title"
+                $0.title = "Was möchtest du spenden?"
         }
         
         form +++ Section("Beschreibung")
             <<< TextAreaRow("description") {
-                $0.placeholder = "Beschreibe es..."
+                $0.placeholder = "Beschreibe deine Spende"
         }
         form +++ Section()
             
