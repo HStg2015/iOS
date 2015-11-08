@@ -33,6 +33,9 @@ class KAViewController: UICollectionViewController, UICollectionViewDelegateFlow
         refreshControl.addTarget(self, action: Selector("loadItems"), forControlEvents: .ValueChanged)
         self.collectionView?.addSubview(refreshControl)
         self.collectionView?.alwaysBounceVertical = true
+        
+        self.tabBarController?.tabBarItem.title = "Kleinanzeigen"
+        
         updateItemSizeForSizeClass(self.traitCollection)
         setupNavigationBar()
         loadItems()
