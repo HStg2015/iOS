@@ -25,9 +25,8 @@ class KAAddFormViewController: FormViewController {
         }
         
         form +++ Section()
-            <<< TextRow("title") {
+            <<< TextFloatLabelRow("title") {
                 $0.title = "Title"
-                $0.placeholder = "Ein Title für die Anzeige"
         }
         
         form +++ Section("Beschreibung")
@@ -41,15 +40,17 @@ class KAAddFormViewController: FormViewController {
                 $0.options = KAItem.Category.Strings
             }
             
-            <<< TextRow("location") {
-                $0.title = "Location"
+            <<< TextFloatLabelRow("location") {
                 $0.title = "PLZ oder Stadt"
             }
-            <<< PhoneRow("tel") {
+            <<< TextFloatLabelRow("tel") {
                 $0.title = "Telefon"
+                $0.cell.textField.keyboardType = .PhonePad
             }
-            <<< EmailRow("mail") {
+            <<< TextFloatLabelRow("mail") {
                 $0.title = "E-Mail"
+                $0.cell.textField.keyboardType = .EmailAddress
+                $0.cell.textField.autocorrectionType = .No
         }
         
         
@@ -62,12 +63,12 @@ class KAAddFormViewController: FormViewController {
     
     
     @IBAction func done(sender: UIBarButtonItem) {
-        guard let title = (form.rowByTag("title") as? TextRow)?.value,
-            des = (form.rowByTag("description") as? TextAreaRow)?.value,
+        guard let title: String = form.rowByTag("title")?.value,
+        des: String = form.rowByTag("description")?.value,
             category = (form.rowByTag("category") as? PickerInlineRow<String>)?.value.flatMap({ KAItem.Category.Strings.indexOf($0) }),
-        loc = (form.rowByTag("location") as? TextRow)?.value,
-        phone = (form.rowByTag("tel") as? PhoneRow)?.value,
-        mail = (form.rowByTag("mail") as? EmailRow)?.value else {
+        loc: String = form.rowByTag("location")?.value,
+        phone: String = form.rowByTag("tel")?.value,
+        mail: String = form.rowByTag("mail")?.value else {
             let alert = UIAlertController(title: "Error", message: "Alle Felder ausfüllen", preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel) { _ in })
             self.presentViewController(alert, animated: true, completion: nil)
@@ -85,6 +86,7 @@ class KAAddFormViewController: FormViewController {
                 alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel) { _ in })
                 self.presentViewController(alert, animated: true, completion: nil)
             } else {
+                NSNotificationCenter.defaultCenter().postNotificationName("addedItem", object: nil)
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
             

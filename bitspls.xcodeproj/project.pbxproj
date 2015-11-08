@@ -17,6 +17,8 @@
 		7F10BC511BEEE3C5009B72A6 /* KATextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F10BC501BEEE3C5009B72A6 /* KATextViewTableViewCell.swift */; };
 		7F10BC531BEEEACE009B72A6 /* KAAddFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F10BC521BEEEACE009B72A6 /* KAAddFormViewController.swift */; };
 		7F10BC561BEF092D009B72A6 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7F10BC551BEF092D009B72A6 /* test.jpg */; };
+		7F12941F1BEF6FB700FF4992 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F12941E1BEF6FB700FF4992 /* FloatLabelTextField.swift */; };
+		7F1294211BEF6FC300FF4992 /* CustomCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1294201BEF6FC300FF4992 /* CustomCells.swift */; };
 		7F31FFC41BEE16ED0031D728 /* KADetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F31FFC31BEE16ED0031D728 /* KADetailTableViewController.swift */; };
 		7F9B8F5B1BEE6D3100C6C721 /* KATitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9B8F5A1BEE6D3100C6C721 /* KATitleTableViewCell.swift */; };
 		7F9B8F5E1BEE77B000C6C721 /* KAMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9B8F5D1BEE77B000C6C721 /* KAMapTableViewCell.swift */; };
@@ -68,6 +70,8 @@
 		7F10BC501BEEE3C5009B72A6 /* KATextViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KATextViewTableViewCell.swift; sourceTree = "<group>"; };
 		7F10BC521BEEEACE009B72A6 /* KAAddFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAAddFormViewController.swift; sourceTree = "<group>"; };
 		7F10BC551BEF092D009B72A6 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
+		7F12941E1BEF6FB700FF4992 /* FloatLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTextField.swift; sourceTree = "<group>"; };
+		7F1294201BEF6FC300FF4992 /* CustomCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCells.swift; sourceTree = "<group>"; };
 		7F31FFC31BEE16ED0031D728 /* KADetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KADetailTableViewController.swift; sourceTree = "<group>"; };
 		7F9B8F5A1BEE6D3100C6C721 /* KATitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KATitleTableViewCell.swift; sourceTree = "<group>"; };
 		7F9B8F5D1BEE77B000C6C721 /* KAMapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAMapTableViewCell.swift; sourceTree = "<group>"; };
@@ -223,6 +227,8 @@
 				7FC30AE21BED5C0800BFA883 /* View Controller */,
 				7FC30AE31BED5CB800BFA883 /* KACollectionViewCell.swift */,
 				7F10BC461BEED70E009B72A6 /* KAAddItemTextField.swift */,
+				7F12941E1BEF6FB700FF4992 /* FloatLabelTextField.swift */,
+				7F1294201BEF6FC300FF4992 /* CustomCells.swift */,
 				7F9B8F5C1BEE773800C6C721 /* TableViewCells */,
 			);
 			name = UI;
@@ -440,6 +446,7 @@
 			files = (
 				7F10BC4D1BEEE21D009B72A6 /* KASegmentedTableViewCell.swift in Sources */,
 				7F10BC471BEED70E009B72A6 /* KAAddItemTextField.swift in Sources */,
+				7F1294211BEF6FC300FF4992 /* CustomCells.swift in Sources */,
 				7F10BC4B1BEEDF2C009B72A6 /* KATextFieldTableViewCell.swift in Sources */,
 				7F9B8F5E1BEE77B000C6C721 /* KAMapTableViewCell.swift in Sources */,
 				7F10BC531BEEEACE009B72A6 /* KAAddFormViewController.swift in Sources */,
@@ -447,6 +454,7 @@
 				7F10BC491BEEDA27009B72A6 /* KAAddItemTableViewController.swift in Sources */,
 				7FC30AB61BED567800BFA883 /* KAViewController.swift in Sources */,
 				7FC025C51BEF297D00F0F925 /* KAHeaderView.swift in Sources */,
+				7F12941F1BEF6FB700FF4992 /* FloatLabelTextField.swift in Sources */,
 				225E4C6F1BEE539000DD367C /* IHViewController.swift in Sources */,
 				7F31FFC41BEE16ED0031D728 /* KADetailTableViewController.swift in Sources */,
 				7F9B8F5B1BEE6D3100C6C721 /* KATitleTableViewCell.swift in Sources */,

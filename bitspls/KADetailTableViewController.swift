@@ -51,6 +51,7 @@ class KADetailTableViewController: UITableViewController, MFMessageComposeViewCo
     
     var item: KAItem? {
         didSet {
+            print("iten set")
             guard let newItem = item else { return }
             sections = [.Title(newItem.title), .Description(text: newItem.description),
                 .Detail(details: newItem.detailsForController(self))]
@@ -64,13 +65,16 @@ class KADetailTableViewController: UITableViewController, MFMessageComposeViewCo
                         return
                 }
                 self.sections.append(.Map(center: loc.coordinate))
-                self.tableView.reloadData()
-               // self.tableView.insertSections(NSIndexSet(index: self.sections.count - 1), withRowAnimation: .Bottom)
+                //self.tableView.reloadData()
+               self.tableView.beginUpdates()
+                self.tableView.insertSections(NSIndexSet(index: self.sections.count - 1), withRowAnimation: .Bottom)
+                self.tableView.endUpdates()
             }
         }
     }
     
     private var sections: [Section] = []
+    
     
     
     override func viewDidLoad() {
@@ -80,6 +84,7 @@ class KADetailTableViewController: UITableViewController, MFMessageComposeViewCo
         if let url = item?.imageURL {
             self.tableView.parallaxView.imageView.sd_setImageWithURL(url, placeholderImage: UIImage(named: "placeholder"))
         }
+        
         self.title = item?.title
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableViewAutomaticDimension

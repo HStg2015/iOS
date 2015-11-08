@@ -27,8 +27,10 @@ struct KAModel {
                     $0.date.earlierDate($1.date) == $0.date
                     })
         }
-        if let i = sortedItmes {
+        var new = true
+        if let i = sortedItmes where !i.isEmpty {
             completion(items: i, add: false)
+            new = false
         }
         let latest = lastItems?.reduce(lastItems?.first) {
             let last = $1.date
@@ -65,7 +67,7 @@ struct KAModel {
                                     })
                         }
                         
-                        completion(items: sorted, add: true)
+                        completion(items: sorted, add: !new)
                     }
                 }
         }
@@ -104,6 +106,14 @@ struct KAModel {
         })
     }
     
+    static func clearItemCache() {
+        do {
+            let realm = try Realm()
+            try realm.write {
+                realm.deleteAll()
+            }
+        } catch { }
+    }
     
     static func sortInCategories(item: KAItem, categories: [(KAItem.Category, [KAItem])]) -> [(KAItem.Category, [KAItem])] {
         let s: ([(KAItem.Category, [KAItem])], Bool) = categories.reduce(([], false)) {
