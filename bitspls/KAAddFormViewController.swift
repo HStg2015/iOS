@@ -116,10 +116,11 @@ class KAAddFormViewController: FormViewController {
     }
     
     func setupStatusBar(){
+        self.title = "Anzeige aufgeben"
         self.navigationController?.navigationBar.barTintColor = UIColor.bitsplsOrangeBright()
-//        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-//        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
-//        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.setNeedsStatusBarAppearanceUpdate()
     }
 }
