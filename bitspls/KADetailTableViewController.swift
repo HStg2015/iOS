@@ -8,17 +8,12 @@
 
 import UIKit
 import MapKit
-import AlamofireImage
+import SDWebImage
 import MessageUI
 
 class KADetailTableViewController: UITableViewController, MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate {
     
-    private struct CellIdentifier {
-        static let Description = "bitspls.cell.description"
-        static let Phone = "bitspls.cell.phone"
-    }
-    
-    
+   
     private enum Section {
         case Title(String)
         case Description(text: String)
@@ -69,9 +64,8 @@ class KADetailTableViewController: UITableViewController, MFMessageComposeViewCo
                         return
                 }
                 self.sections.append(.Map(center: loc.coordinate))
-                self.tableView.beginUpdates()
-                self.tableView.insertSections(NSIndexSet(index: self.sections.count - 1), withRowAnimation: .Bottom)
-                self.tableView.endUpdates()
+                self.tableView.reloadData()
+               // self.tableView.insertSections(NSIndexSet(index: self.sections.count - 1), withRowAnimation: .Bottom)
             }
         }
     }
@@ -84,7 +78,7 @@ class KADetailTableViewController: UITableViewController, MFMessageComposeViewCo
         
         self.tableView.addParallaxWithImage(UIImage(named: "placeholder"), andHeight: 200)
         if let url = item?.imageURL {
-            self.tableView.parallaxView.imageView.af_setImageWithURL(url, placeholderImage: UIImage(named: "placeholder"))
+            self.tableView.parallaxView.imageView.sd_setImageWithURL(url, placeholderImage: UIImage(named: "placeholder"))
         }
         self.title = item?.title
         tableView.estimatedRowHeight = 44.0

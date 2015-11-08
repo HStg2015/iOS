@@ -72,6 +72,16 @@ class KAViewController: UICollectionViewController, UICollectionViewDelegateFlow
     }
     
     
+    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        if kind == UICollectionElementKindSectionHeader {
+            if let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "bitspls.ka.header", forIndexPath: indexPath) as? KAHeaderView,
+                category = self.items?[indexPath.section] {
+                    header.label.text = KAItem.Category.Strings[category.0.rawValue - 1]
+                    return header
+            }
+        }
+        return super.collectionView(collectionView, viewForSupplementaryElementOfKind: kind, atIndexPath: indexPath)
+    }
     
     override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         coordinator.animateAlongsideTransition({ ctx in

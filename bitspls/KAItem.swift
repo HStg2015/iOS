@@ -8,8 +8,14 @@
 
 import Argo
 import Curry
+import RealmSwift
 
 
+//class KARealmItem: Object {
+//    let id: Int
+//    let title: String = ""
+//    let
+//}
 
 struct KAItem {
     let id: Int
@@ -47,6 +53,9 @@ struct KAItem {
         case Kleidung = 3
         case Möbel = 4
         case Sonstiges = 5
+        
+        static let Strings: [String] = ["Elektronik", "Spielzeuge", "Kleidung", "Möbel", "Sonstiges"]
+
     }
 }
 

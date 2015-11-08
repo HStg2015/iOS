@@ -18,6 +18,7 @@ struct KAModel {
     }
     
     static func loadItems(completion: (items: [(KAItem.Category, [KAItem])]) -> Void, error: (ErrorType?) -> Void) {
+       
         Alamofire.request(.GET, URL.Base + URL.SimpleOffer)
             .responseJSON { response in
                 switch response.result {
@@ -40,6 +41,39 @@ struct KAModel {
                     }
                 }
         }
+    }
+    
+    static func saveItem(title: String, description: String, category: Int, location: String, phone: String, mail: String, image: UIImage?, completion: (error: ErrorType?) -> Void) {
+        Alamofire.upload(
+            .POST,
+            URL.Base + URL.SimpleOffer,
+            multipartFormData: { multipartFormData in
+                multipartFormData.appendBodyPart(data: title.dataUsingEncoding(NSUTF8StringEncoding)!, name: "title")
+                multipartFormData.appendBodyPart(data: description.dataUsingEncoding(NSUTF8StringEncoding)!, name: "description")
+                multipartFormData.appendBodyPart(data: "\(category)".dataUsingEncoding(NSUTF8StringEncoding)!, name: "category")
+                 multipartFormData.appendBodyPart(data: location.dataUsingEncoding(NSUTF8StringEncoding)!, name: "city")
+                 multipartFormData.appendBodyPart(data: phone.dataUsingEncoding(NSUTF8StringEncoding)!, name: "telephone")
+                 multipartFormData.appendBodyPart(data: mail.dataUsingEncoding(NSUTF8StringEncoding)!, name: "email")
+                if let i = image {
+                multipartFormData.appendBodyPart(data: UIImagePNGRepresentation(i)!, name: "image", fileName: "temp_image.png", mimeType: "image/png")
+                } else {
+                    multipartFormData.appendBodyPart(data: "".dataUsingEncoding(NSUTF8StringEncoding)!, name: "image")
+                }
+               
+            },
+            encodingCompletion: { encodingResult in
+                switch encodingResult {
+                case .Success(let upload, _, _):
+                    upload.responseJSON { response in
+                        
+                        debugPrint(response)
+                        completion(error: response.response?.statusCode == 400 ? NSError(domain: "400", code: 400, userInfo: nil) : nil)
+                    }
+                case .Failure(let encodingError):
+                    print(encodingError)
+                    completion(error: encodingError)
+                }
+        })
     }
     
     

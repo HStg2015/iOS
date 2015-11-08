@@ -24,12 +24,37 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>BusyNavigationBar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Curry.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Eureka.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-bitspls.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Realm.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RealmSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -47,12 +72,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>432ECC54282C84882B482CCB4CF227FC</key>
+		<key>31EF08F3444DCD2B169D92269C5BCD3D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>49BA6A1A07AABCA1FD3570B754B53661</key>
+		<key>432ECC54282C84882B482CCB4CF227FC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,12 +87,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>5D83B3690EEFF392DF730B105188C042</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>A1BF58736B6CCECB5DB30E2108366143</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D4DD8E6B0713E20922D54600E7F42C47</key>
+		<key>D4E73EDCBA4806F41DB0F36EAD0F620D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DEEDA103AD2AA51ED9F033B0B721589E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F3193F5C61215D712D562071B1C11648</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F8A16DC4EA97CBEBFF18D3A03587AFE1</key>
 		<dict>
 			<key>primary</key>
 			<true/>

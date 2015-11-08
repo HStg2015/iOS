@@ -8,6 +8,7 @@
 
 import UIKit
 import AlamofireImage
+import SDWebImage
 
 class KACollectionViewCell: UICollectionViewCell {
     
@@ -23,7 +24,7 @@ class KACollectionViewCell: UICollectionViewCell {
         didSet {
             
             if let imageURL = item?.imageURL {
-                imageView.af_setImageWithURL(imageURL, placeholderImage: UIImage(named: "placeholder"))
+               imageView.sd_setImageWithURL(imageURL, placeholderImage: UIImage(named: "placeholder"))
             } else {
                 imageView.image = UIImage(named: "placeholder")
             }
