@@ -51,7 +51,6 @@ class KADetailTableViewController: UITableViewController, MFMessageComposeViewCo
     
     var item: KAItem? {
         didSet {
-            print("iten set")
             guard let newItem = item else { return }
             sections = [.Title(newItem.title), .Description(text: newItem.description),
                 .Detail(details: newItem.detailsForController(self))]

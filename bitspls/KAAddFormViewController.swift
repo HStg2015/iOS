@@ -17,7 +17,7 @@ class KAAddFormViewController: FormViewController {
         self.tableView?.addParallaxWithImage(UIImage(named: "placeholder"), andHeight: 150)
         form +++ Section()
             <<< ImageRow("image") {
-                $0.title = "Bild hinzufügen ..."
+                $0.title = "Bild"
                 }.onChange {
                     if let image = $0.value {
                         self.tableView?.addParallaxWithImage(image, andHeight: 150)
@@ -26,12 +26,12 @@ class KAAddFormViewController: FormViewController {
         
         form +++ Section()
             <<< TextFloatLabelRow("title") {
-                $0.title = "Was möchtest du spenden?"
+                $0.title = "Title"
         }
         
         form +++ Section("Beschreibung")
             <<< TextAreaRow("description") {
-                $0.placeholder = "Beschreibe deine Spende"
+                $0.placeholder = "Beschreibe es..."
         }
         form +++ Section()
             
@@ -47,10 +47,8 @@ class KAAddFormViewController: FormViewController {
                 $0.title = "Telefon"
                 $0.cell.textField.keyboardType = .PhonePad
             }
-            <<< TextFloatLabelRow("mail") {
+            <<< EmailFloatLabelRow("mail") {
                 $0.title = "E-Mail"
-                $0.cell.textField.keyboardType = .EmailAddress
-                $0.cell.textField.autocorrectionType = .No
         }
         
         
@@ -61,6 +59,12 @@ class KAAddFormViewController: FormViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animateAlongsideTransition({ context in
+            self.tableView?.parallaxView.frame.size.width = self.tableView?.bounds.width ?? 0
+            self.tableView?.parallaxView.imageView.frame.size.width = self.tableView?.bounds.width ?? 0
+            }, completion: nil)
+    }
     
     @IBAction func done(sender: UIBarButtonItem) {
         guard let title: String = form.rowByTag("title")?.value,

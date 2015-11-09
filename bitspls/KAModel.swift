@@ -18,23 +18,14 @@ struct KAModel {
         static let SimpleOffer = "simple_offer/"
     }
     
-    static func loadItems(completion: (items: [(KAItem.Category, [KAItem])], add: Bool) -> Void, error: (ErrorType?) -> Void) {
+    static func loadItems(completion: (items: [KAItem], add: Bool) -> Void, error: (ErrorType?) -> Void) {
         let lastItems = (try? Realm().objects(KARealmItem))?.map { $0.item }
-        let sortedItmes = lastItems?.reduce([]) {
-            return sortInCategories($1, categories: $0 ?? [])
-            }.map {
-                ($0.0, $0.1.sort {
-                    $0.date.earlierDate($1.date) == $0.date
-                    })
-        }
-        var new = true
-        if let i = sortedItmes where !i.isEmpty {
-            completion(items: i, add: false)
-            new = false
+        
+        if let items = lastItems where !items.isEmpty {
+            completion(items: items, add: false)
         }
         let latest = lastItems?.reduce(lastItems?.first) {
             let last = $1.date
-            
             guard let first = $0?.date where first.earlierDate(last) == last else { return $0 }
             return $1
             
@@ -59,15 +50,7 @@ struct KAModel {
                         let _ = try? realm?.write {
                             realm?.add(realmItems)
                         }
-                        let sorted = items.reduce([]) {
-                            return sortInCategories($1, categories: $0 ?? [])
-                            }.map {
-                                ($0.0, $0.1.sort {
-                                    $0.date.earlierDate($1.date) == $0.date
-                                    })
-                        }
-                        
-                        completion(items: sorted, add: !new)
+                        completion(items: items, add: latest != nil)
                     }
                 }
         }
@@ -115,20 +98,28 @@ struct KAModel {
         } catch { }
     }
     
-    static func sortInCategories(item: KAItem, categories: [(KAItem.Category, [KAItem])]) -> [(KAItem.Category, [KAItem])] {
-        let s: ([(KAItem.Category, [KAItem])], Bool) = categories.reduce(([], false)) {
-            let t = $0
-            let n = $1
-            if $1.0 == item.category {
-                return (t.0 + [(n.0, n.1 + [item])], true)
-            } else {
-                return (t.0 + [n], t.1)
+    static func sortIntoCategories(items items: [KAItem], oldItems: [(KAItem.Category, [KAItem])]? = nil) -> [(KAItem.Category, [KAItem])] {
+        let newItems: [(KAItem.Category, [KAItem])]
+        if items.isEmpty {
+            newItems = oldItems ?? []
+        } else {
+            newItems = items.reduce(oldItems ?? []) { categories, item in
+                let s: ([(KAItem.Category, [KAItem])], Bool) = categories.reduce(([], false)) {
+                    if $1.0 == item.category {
+                        return ($0.0 + [($1.0, $1.1 + [item])], true)
+                    } else {
+                        return ($0.0 + [$1], $0.1)
+                    }
+                }
+                return !s.1 ? s.0 + [(item.category, [item])] : s.0
             }
         }
-        if !s.1 {
-            return s.0 + [(item.category, [item])]
-        } else {
-            return s.0
+        
+        return newItems.map {
+            ($0.0, $0.1.sort {
+                $0.date.earlierDate($1.date) == $0.date
+                })
+            
         }
     }
 }

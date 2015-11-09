@@ -51,29 +51,18 @@ class KAViewController: UICollectionViewController, UICollectionViewDelegateFlow
         self.refreshControl.beginRefreshing()
         KAModel.loadItems({ (items, add) in
             self.refreshControl.endRefreshing()
-            if add {
-                print(items.count)
-                print(items)
-                let t: [KAItem] = items.flatMap { $0.1 }
-                let sorted = t.reduce(self.items ?? []) {
-                    return KAModel.sortInCategories($1, categories: $0 ?? [])
-                    }.map {
-                        ($0.0, $0.1.sort {
-                            $0.date.earlierDate($1.date) == $0.date
-                            })
-                }
-
-                self.items = sorted
-            } else {
-                self.items = items
-                self.collectionView?.reloadData()
-
-            }
+            self.items = KAModel.sortIntoCategories(items: items, oldItems: add ? self.items : nil)
+            self.collectionView?.reloadData()
+            
             }) { error in
                 print(error)
                 self.refreshControl.endRefreshing()
-                NSOperationQueue.mainQueue().addOperationWithBlock {
-                    
+                if let e = error {
+                    NSOperationQueue.mainQueue().addOperationWithBlock {
+                        let alert = UIAlertController(title: "Error", message: (e as NSError).localizedDescription, preferredStyle: .Alert)
+                        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel) { _ in })
+                        self.presentViewController(alert, animated: true, completion: nil)
+                    }
                 }
         }
     }
@@ -116,7 +105,6 @@ class KAViewController: UICollectionViewController, UICollectionViewDelegateFlow
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("segue ´")
         guard let identifier = segue.identifier,
             cell = sender as? KACollectionViewCell else {
                 super.prepareForSegue(segue, sender: sender)
@@ -135,6 +123,7 @@ class KAViewController: UICollectionViewController, UICollectionViewDelegateFlow
     
     
     func setupNavigationBar(){
+        self.title = "donaid"
         self.navigationController?.navigationBar.barTintColor = UIColor.bitsplsOrangeBright()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
