@@ -116,7 +116,7 @@ class KAAddFormViewController: FormViewController {
     }
     
     func setupStatusBar(){
-        self.title = "Anzeige aufgeben"
+        self.title = "Spende einreichen"
         self.navigationController?.navigationBar.barTintColor = UIColor.bitsplsOrangeBright()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black

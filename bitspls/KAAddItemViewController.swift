@@ -46,7 +46,7 @@ class KAAddItemViewController: UIViewController, UITextFieldDelegate, UIImagePic
         
         setupStatusBar()
         self.tabBarItem = UITabBarItem.init(tabBarSystemItem: UITabBarSystemItem.MostViewed, tag: 0)
-        self.title = "Kleinanzeigen"
+        self.title = "donaid"
         
         if let image = thumbnailImage {
             

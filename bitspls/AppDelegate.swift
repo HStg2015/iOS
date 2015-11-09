@@ -8,12 +8,18 @@
 
 import UIKit
 
+
+
+@available(iOS 9.0, *)
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
     let vc = KAViewController() as UIViewController
+
+    var shortcutItem: UIApplicationShortcutItem?
+
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -24,6 +30,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.vc.navigationController?.navigationBar.barStyle = UIBarStyle.Black
             self.vc.navigationController?.setNeedsStatusBarAppearanceUpdate()
         }
+        
+        var performShortcutDelegate = true
+        
+        if #available(iOS 9.0, *) {
+            if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsShortcutItemKey] as? UIApplicationShortcutItem {
+                
+                print("Application launched via shortcut")
+                self.shortcutItem = shortcutItem
+                
+                performShortcutDelegate = false
+                
+                
+            }
+        } else {
+            // Fallback on earlier versions
+        }
+        
+        return performShortcutDelegate
         
         return true
     }
@@ -44,6 +68,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        guard let shortcut = shortcutItem else { return }
+        
+        print("- Shortcut property has been set")
+        
+        handleShortcut(shortcut)
+        
+        self.shortcutItem = nil
     }
 
     func applicationWillTerminate(application: UIApplication) {
@@ -53,6 +85,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }
+    
+    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+        
+        let urlString = "\(url)"
+        
+        if urlString == "donaid://addDonation"{
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            let navVC = storyboard.instantiateViewControllerWithIdentifier("addDonation") as! UINavigationController
+            
+            self.window?.rootViewController?.presentViewController(navVC, animated: true, completion: nil)
+        }
+        return true
+    }
+    
+    @available(iOS 9.0, *)
+    func handleShortcut( shortcutItem:UIApplicationShortcutItem ) -> Bool {
+        print("Handling shortcut")
+        
+        var succeeded = false
+        
+        if( shortcutItem.type == "com.donaid.iOS.addDonation" ) {
+            
+            // Add your code here
+            print("- Handling \(shortcutItem.type)")
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let navVC = storyboard.instantiateViewControllerWithIdentifier("addDonation") as! UINavigationController
+            self.window?.rootViewController?.presentViewController(navVC, animated: true, completion: nil)
 
+            
+            
+            succeeded = true
+            
+        }
+        
+        return succeeded
+        
+    }
+    
+    @available(iOS 9.0, *)
+    func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
+        
+        print("Application performActionForShortcutItem")
+        completionHandler( handleShortcut(shortcutItem) )
+        
+    }
 }
-
