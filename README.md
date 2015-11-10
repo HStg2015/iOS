@@ -1,5 +1,5 @@
 # iOS
-This is the iOS portion of the Hackathon Stuttgart 2015 App "donaid" (from donate + aid). For more information about the backend and the Android app (which lets you print out the information for people without internet access or a smartphone) app, please refer to their repositories ([backend](https://github.com/HStg2015/backend) & [Android](https://github.com/HStg2015/Android))
+This is the iOS portion of the Hackathon Stuttgart 2015 App "donaid" (from donate + aid). For more information about the backend and the Android app (which lets you print out the information for people without internet access or a smartphone; iOS is about to follow) app, please refer to their repositories ([backend](https://github.com/HStg2015/backend) & [Android](https://github.com/HStg2015/Android))
 
 ###Installation
 Open **bitspls.xcworkspace** (Cocoapods recommended) via Xcode
