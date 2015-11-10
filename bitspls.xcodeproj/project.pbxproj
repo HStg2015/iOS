@@ -15,6 +15,7 @@
 		7F10BC531BEEEACE009B72A6 /* KAAddFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F10BC521BEEEACE009B72A6 /* KAAddFormViewController.swift */; };
 		7F12941F1BEF6FB700FF4992 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F12941E1BEF6FB700FF4992 /* FloatLabelTextField.swift */; };
 		7F1294211BEF6FC300FF4992 /* CustomCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1294201BEF6FC300FF4992 /* CustomCells.swift */; };
+		7F318F431BF2423800C8D911 /* KAItemPrintPageRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F318F421BF2423800C8D911 /* KAItemPrintPageRenderer.swift */; };
 		7F31FFC41BEE16ED0031D728 /* KADetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F31FFC31BEE16ED0031D728 /* KADetailTableViewController.swift */; };
 		7F9B8F5B1BEE6D3100C6C721 /* KATitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9B8F5A1BEE6D3100C6C721 /* KATitleTableViewCell.swift */; };
 		7F9B8F5E1BEE77B000C6C721 /* KAMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9B8F5D1BEE77B000C6C721 /* KAMapTableViewCell.swift */; };
@@ -23,6 +24,8 @@
 		7FB0D8FD1BEE2C7D0009E5E6 /* KADetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB0D8FC1BEE2C7D0009E5E6 /* KADetailTableViewCell.swift */; };
 		7FB0D8FF1BEE38AF0009E5E6 /* KAModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB0D8FE1BEE38AF0009E5E6 /* KAModel.swift */; };
 		7FB16CC31BEDF917002AF60D /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB16CC21BEDF917002AF60D /* CustomColors.swift */; };
+		7FB9BD2E1BF254AC000A3571 /* KAPrintView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FB9BD2D1BF254AC000A3571 /* KAPrintView.xib */; };
+		7FB9BD301BF257BC000A3571 /* KAPrintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB9BD2F1BF257BC000A3571 /* KAPrintView.swift */; };
 		7FC025C51BEF297D00F0F925 /* KAHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC025C41BEF297D00F0F925 /* KAHeaderView.swift */; };
 		7FC30AB41BED567800BFA883 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC30AB31BED567800BFA883 /* AppDelegate.swift */; };
 		7FC30AB61BED567800BFA883 /* KAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC30AB51BED567800BFA883 /* KAViewController.swift */; };
@@ -64,6 +67,7 @@
 		7F10BC521BEEEACE009B72A6 /* KAAddFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAAddFormViewController.swift; sourceTree = "<group>"; };
 		7F12941E1BEF6FB700FF4992 /* FloatLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTextField.swift; sourceTree = "<group>"; };
 		7F1294201BEF6FC300FF4992 /* CustomCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCells.swift; sourceTree = "<group>"; };
+		7F318F421BF2423800C8D911 /* KAItemPrintPageRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAItemPrintPageRenderer.swift; sourceTree = "<group>"; };
 		7F31FFC31BEE16ED0031D728 /* KADetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KADetailTableViewController.swift; sourceTree = "<group>"; };
 		7F9B8F5A1BEE6D3100C6C721 /* KATitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KATitleTableViewCell.swift; sourceTree = "<group>"; };
 		7F9B8F5D1BEE77B000C6C721 /* KAMapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAMapTableViewCell.swift; sourceTree = "<group>"; };
@@ -73,6 +77,8 @@
 		7FB0D8FC1BEE2C7D0009E5E6 /* KADetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KADetailTableViewCell.swift; sourceTree = "<group>"; };
 		7FB0D8FE1BEE38AF0009E5E6 /* KAModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAModel.swift; sourceTree = "<group>"; };
 		7FB16CC21BEDF917002AF60D /* CustomColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
+		7FB9BD2D1BF254AC000A3571 /* KAPrintView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KAPrintView.xib; sourceTree = "<group>"; };
+		7FB9BD2F1BF257BC000A3571 /* KAPrintView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAPrintView.swift; sourceTree = "<group>"; };
 		7FC025C41BEF297D00F0F925 /* KAHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KAHeaderView.swift; sourceTree = "<group>"; };
 		7FC30AB01BED567700BFA883 /* bitspls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bitspls.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FC30AB31BED567800BFA883 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -161,6 +167,9 @@
 			children = (
 				7FC30AB71BED567800BFA883 /* Main.storyboard */,
 				7FC30AE51BED5CC000BFA883 /* UI */,
+				7F318F421BF2423800C8D911 /* KAItemPrintPageRenderer.swift */,
+				7FB9BD2D1BF254AC000A3571 /* KAPrintView.xib */,
+				7FB9BD2F1BF257BC000A3571 /* KAPrintView.swift */,
 				7FC30AE81BED645E00BFA883 /* Model */,
 				7FE407461BF144D4000BC244 /* Constants */,
 				7FC30AE11BED5BE600BFA883 /* Supporting files */,
@@ -380,6 +389,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FB9BD2E1BF254AC000A3571 /* KAPrintView.xib in Resources */,
 				7FC30ABE1BED567800BFA883 /* LaunchScreen.storyboard in Resources */,
 				7FC30ABB1BED567800BFA883 /* Assets.xcassets in Resources */,
 				7FC30AB91BED567800BFA883 /* Main.storyboard in Resources */,
@@ -456,6 +466,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F10BC4D1BEEE21D009B72A6 /* KASegmentedTableViewCell.swift in Sources */,
+				7F318F431BF2423800C8D911 /* KAItemPrintPageRenderer.swift in Sources */,
+				7FB9BD301BF257BC000A3571 /* KAPrintView.swift in Sources */,
 				7F1294211BEF6FC300FF4992 /* CustomCells.swift in Sources */,
 				7F10BC4B1BEEDF2C009B72A6 /* KATextFieldTableViewCell.swift in Sources */,
 				7F9B8F5E1BEE77B000C6C721 /* KAMapTableViewCell.swift in Sources */,

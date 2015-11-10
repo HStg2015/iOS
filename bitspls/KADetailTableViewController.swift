@@ -131,16 +131,10 @@ class KADetailTableViewController: UITableViewController, MFMessageComposeViewCo
             }, completion: nil)
     }
     
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-        controller.dismissViewControllerAnimated(true, completion: nil)
-    }
     
-    func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
-        controller.dismissViewControllerAnimated(true, completion: nil)
-        
-    }
-    
-    
+    //MARK: Actions
+
+    //Mail action
     func composeMail() {
         if let i = self.item where MFMailComposeViewController.canSendMail() {
             let vc = MFMailComposeViewController()
@@ -151,10 +145,21 @@ class KADetailTableViewController: UITableViewController, MFMessageComposeViewCo
         }
     }
     
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
+    //Phone action
     func makeCall() {
         item?.phoneURL.map { UIApplication.sharedApplication().openURL($0) }
     }
     
+    //Message action
     func writeMessage() {
         if let number = item?.phone where MFMessageComposeViewController.canSendText() {
             let vc = MFMessageComposeViewController()
@@ -164,6 +169,19 @@ class KADetailTableViewController: UITableViewController, MFMessageComposeViewCo
         }
     }
     
+    
+    //Print action
+    @IBAction func printItem(sender: UIBarButtonItem) {
+        guard let i = self.item else { return }
+        let printInfo = UIPrintInfo(dictionary: nil)
+        printInfo.jobName = i.title
+        printInfo.outputType = .General
+        
+        let printController = UIPrintInteractionController.sharedPrintController()
+        printController.printInfo = printInfo
+        printController.printPageRenderer = KAItemPrintPageRenderer(item: i, image: self.tableView.parallaxView.imageView.image)
+        printController.presentAnimated(true, completionHandler: nil)
+    }
 }
 
 extension KAItem {
