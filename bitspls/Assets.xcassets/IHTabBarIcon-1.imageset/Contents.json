@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Menu Filled-25.png",
+      "filename" : "User Group-25.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Menu Filled-50.png",
+      "filename" : "User Group-50.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Menu Filled-75.png",
+      "filename" : "User Group-75.png",
       "scale" : "3x"
     }
   ],

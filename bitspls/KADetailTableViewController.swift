@@ -179,6 +179,7 @@ class KADetailTableViewController: UITableViewController, MFMessageComposeViewCo
         
         let printController = UIPrintInteractionController.sharedPrintController()
         printController.printInfo = printInfo
+        printController.showsPaperSelectionForLoadedPapers = true
         printController.printPageRenderer = KAItemPrintPageRenderer(item: i, image: self.tableView.parallaxView.imageView.image)
         printController.presentAnimated(true, completionHandler: nil)
     }
