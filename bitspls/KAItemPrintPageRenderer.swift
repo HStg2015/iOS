@@ -18,32 +18,69 @@ class KAItemPrintPageRenderer: UIPrintPageRenderer {
         self.item = item
         self.image = image
         super.init()
-        self.headerHeight = CGFloat(1).points
+        self.headerHeight = PageType(rect: printableRect).headerHeight
     }
     
     override func numberOfPages() -> Int {
         return 1
     }
     
-    let headerAttributes: [String : AnyObject] = [
-        NSForegroundColorAttributeName : UIColor.blackColor(),
-        NSFontAttributeName : UIFont.systemFontOfSize(11)
-    ]
+    enum PageType {
+        case Label, HalfSize, Large
+        
+        init(rect: CGRect) {
+            switch (rect.width, rect.height) {
+            case (0...200, 0...400):
+                self = .Label
+            case (200...600, 400...700):
+                self = .HalfSize
+            default:
+                self = .Large
+            }
+        }
+        
+        var headerHeight: CGFloat {
+            switch self {
+            case .Label: return 0.0
+            case .HalfSize: return CGFloat(0.5).points
+            case .Large: return CGFloat(1).points
+            }
+        }
+        
+        func draw(contentRect: CGRect) {
+            
+        }
+    }
+    
+    private lazy var dateFormatter: NSDateFormatter = {
+        let formatter = NSDateFormatter()
+        formatter.timeStyle = .NoStyle
+        formatter.dateStyle = .MediumStyle
+        return formatter
+    }()
     
     override func drawHeaderForPageAtIndex(pageIndex: Int, inRect headerRect: CGRect) {
-        (item.email as NSString).drawInRect(headerRect, withAttributes: headerAttributes)
+        if headerRect.height > 0 {
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .Right
+            let headerAttributes: [String : AnyObject] = [
+                NSForegroundColorAttributeName : UIColor.blackColor(),
+                NSFontAttributeName : UIFont.systemFontOfSize(11),
+                NSParagraphStyleAttributeName : paragraphStyle
+            ]
+            (self.dateFormatter.stringFromDate(self.item.date) as NSString).drawInRect(headerRect, withAttributes: headerAttributes)
+        }
         
     }
     override func drawContentForPageAtIndex(pageIndex: Int, inRect contentRect: CGRect) {
         switch pageIndex {
         case 0:
-            switch (contentRect.width.inches, contentRect.height.inches) {
-            case (0...1.5, 0...3):
-                break
-            case (1.5...5, 3...7):
-                break
-            default:
-                drawLarge(contentRect)
+            print(contentRect.width, contentRect.height)
+            switch PageType(rect: contentRect) {
+            case .Label: break
+            case . HalfSize: drawHalfSize(contentRect)
+            case .Large : drawLarge(contentRect)
+                
             }
             
             
@@ -54,6 +91,82 @@ class KAItemPrintPageRenderer: UIPrintPageRenderer {
     
     //MARK: Drawing
     
+    private func drawHalfSize(contentRect: CGRect) {
+        let titleParagraphStyle = NSMutableParagraphStyle()
+        titleParagraphStyle.alignment = .Center
+        let titleAttributes: [String : AnyObject] = [
+            NSForegroundColorAttributeName : UIColor.blackColor(),
+            NSFontAttributeName : UIFont.boldSystemFontOfSize(22),
+            NSParagraphStyleAttributeName : titleParagraphStyle
+        ]
+        
+        let descriptionAttributes: [String : AnyObject] = [
+            NSForegroundColorAttributeName : UIColor.blackColor(),
+            NSFontAttributeName : UIFont.systemFontOfSize(10)
+        ]
+        
+        let padding: CGFloat = 9
+        let horizontalHalfSize = contentRect.width / 2 - padding / 2
+        let halfX = contentRect.midX + padding / 2
+        let titleRect = CGRect(
+            origin: contentRect.origin,
+            size: CGSize(
+                width: contentRect.width,
+                height:  (self.item.title as NSString).boundingRectWithSize(contentRect.size, options: .UsesLineFragmentOrigin, attributes: titleAttributes, context: nil).height
+            )
+        )
+        (self.item.title as NSString).drawInRect(titleRect, withAttributes: titleAttributes)
+        
+        let details = [
+            (NSLocalizedString("Phone:", comment: "phone details text"), self.item.phone),
+            (NSLocalizedString("Mail:", comment: "mail details text"), self.item.email),
+            (NSLocalizedString("Location:", comment: "location details text"), self.item.city)
+        ]
+        
+        let detailSize = CGSize(width: horizontalHalfSize, height: (contentRect.maxY - titleRect.maxY) + padding)
+        let detailRects: [((CGRect, String), (CGRect, String))] = details.reduce([]) {
+            let labelY = ($0.last?.1.0.maxY ?? 0) + padding
+            let labelRect = CGRect(
+                origin: CGPoint(x: halfX, y: labelY),
+                size: ($1.0 as NSString).boundingRectWithSize(
+                    CGSize(width: detailSize.width, height: detailSize.height - labelY),
+                    options: .UsesLineFragmentOrigin, attributes: descriptionAttributes, context: nil
+                    ).size
+            )
+            let valueY = labelRect.maxY + padding / 2
+            let valueRect = CGRect(
+                origin: CGPoint(x: halfX + 5, y: valueY),
+                size: ($1.1 as NSString).boundingRectWithSize(
+                    CGSize(width: detailSize.width, height: detailSize.height - valueY),
+                    options: .UsesLineFragmentOrigin, attributes: descriptionAttributes, context: nil
+                    ).size
+            )
+            return $0 + [((labelRect, $1.0), (valueRect, $1.1))]
+        }
+        
+        let detailHeight = detailRects.last?.1.0.maxY ?? 0.0
+        
+        //Sizing image
+        let imageRect: CGRect = image.map {
+            let size = $0.size.scaleMin(width: horizontalHalfSize, height: (contentRect.maxY - titleRect.maxY) - padding * 2 - detailHeight)
+            return CGRect(x: halfX + (horizontalHalfSize - size.width) / 2, y: titleRect.maxY + padding, width: size.width, height: size.height)
+            } ?? titleRect
+        
+        //Drawing image
+        if let i = image { i.drawInRect(imageRect) }
+        
+        
+        detailRects.forEach {
+            ($0.0.1 as NSString).drawInRect($0.0.0.set(Y: $0.0.0.origin.y + imageRect.maxY + padding), withAttributes: descriptionAttributes)
+            ($0.1.1 as NSString).drawInRect($0.1.0.set(Y: $0.1.0.origin.y + imageRect.maxY + padding), withAttributes: descriptionAttributes)
+        }
+        
+        (self.item.description as NSString).drawWithRect(
+            CGRect(x: contentRect.minX, y: titleRect.maxY + padding, width: horizontalHalfSize, height: contentRect.maxY - titleRect.maxY - padding),
+            options: .UsesLineFragmentOrigin, attributes: descriptionAttributes, context: nil
+        )
+        
+    }
     private func drawLarge(contentRect: CGRect) {
         
         let titleParagraphStyle = NSMutableParagraphStyle()
@@ -62,8 +175,8 @@ class KAItemPrintPageRenderer: UIPrintPageRenderer {
             NSForegroundColorAttributeName : UIColor.blackColor(),
             NSFontAttributeName : UIFont.boldSystemFontOfSize(30),
             NSParagraphStyleAttributeName : titleParagraphStyle
-    ]
-    
+        ]
+        
         let descriptionAttributes: [String : AnyObject] = [
             NSForegroundColorAttributeName : UIColor.blackColor(),
             NSFontAttributeName : UIFont.systemFontOfSize(14)
@@ -71,15 +184,19 @@ class KAItemPrintPageRenderer: UIPrintPageRenderer {
         
         let padding: CGFloat = 12
         
-     
+        
         //Title sizing and drawing
-        let titleSize = (item.title as NSString).boundingRectWithSize(contentRect.size, options: .UsesLineFragmentOrigin, attributes: titleAttributes, context: nil)
-        let titleRect = CGRect(origin: contentRect.origin, size: CGSize(width: contentRect.width, height: titleSize.height))
+        let titleRect = CGRect(
+            origin: contentRect.origin,
+            size: CGSize(
+                width: contentRect.width,
+                height:  (self.item.title as NSString).boundingRectWithSize(contentRect.size, options: .UsesLineFragmentOrigin, attributes: titleAttributes, context: nil).height
+            )
+        )
         (self.item.title as NSString).drawInRect(titleRect, withAttributes: titleAttributes)
-
+        
         //Calculate remaing height for image and setting details and description size
-        let detailHeight = ("Phone" as NSString).sizeWithAttributes(descriptionAttributes).height
-        let fullDetailHeight = (detailHeight + padding) * 3
+        let fullDetailHeight = (("Phone" as NSString).sizeWithAttributes(descriptionAttributes).height + padding) * 3
         let descriptionSize = (item.description as NSString).boundingRectWithSize(CGSize(width: contentRect.width, height: contentRect.maxY - titleRect.maxY - fullDetailHeight), options: .UsesLineFragmentOrigin, attributes: descriptionAttributes, context: nil)
         
         //Sizing image
@@ -90,41 +207,41 @@ class KAItemPrintPageRenderer: UIPrintPageRenderer {
         
         //Drawing image
         if let i = image { i.drawInRect(imageRect) }
-
+        
         
         
         //Drawing description
         let descriptionRect = CGRect(x: contentRect.minX, y: imageRect.maxY + padding, width: descriptionSize.width, height: descriptionSize.height)
         (self.item.description as NSString).drawWithRect(descriptionRect, options: .UsesLineFragmentOrigin, attributes: descriptionAttributes, context: nil)
         
-        //Calculation details size
-        //Phone detail
-        let phoneName = NSLocalizedString("Phone:", comment: "phone details text")
-        let phoneNameSize = (phoneName as NSString).sizeWithAttributes(descriptionAttributes)
-        let phoneNameY = descriptionRect.maxY + padding
-        (phoneName as NSString).drawAtPoint(CGPoint(x: contentRect.minX, y: phoneNameY), withAttributes: descriptionAttributes)
-        
-        //Mail details
-        let mailName = NSLocalizedString("Mail:", comment: "mail details text")
-        let mailNameSize = (mailName as NSString).sizeWithAttributes(descriptionAttributes)
-        let mailNameY = phoneNameY + padding + phoneNameSize.height
-        (mailName as NSString).drawAtPoint(CGPoint(x: contentRect.minX, y: mailNameY), withAttributes: descriptionAttributes)
-
-        //Location details
-        let locationName = NSLocalizedString("Location:", comment: "location details text")
-        let locationNameSize = (locationName as NSString).sizeWithAttributes(descriptionAttributes)
-        let locationNameY = mailNameY + padding + mailNameSize.height
-        (locationName as NSString).drawAtPoint(CGPoint(x: contentRect.minX, y: locationNameY), withAttributes: descriptionAttributes)
-
-        //Value labels
-        let detailsX = contentRect.minX + max(phoneNameSize.width, mailNameSize.width, locationNameSize.width) + padding
-        (self.item.phone as NSString).drawAtPoint(CGPoint(x: detailsX, y: phoneNameY), withAttributes: descriptionAttributes)
-        (self.item.email as NSString).drawAtPoint(CGPoint(x: detailsX, y: mailNameY), withAttributes: descriptionAttributes)
-        (self.item.city as NSString).drawAtPoint(CGPoint(x: detailsX, y: locationNameY), withAttributes: descriptionAttributes)
-
+        drawDetailLabels(contentRect, startX: descriptionRect.maxY, attributes: descriptionAttributes, padding: padding)
         
     }
     
+    
+    
+    private func drawDetailLabels(contentRect: CGRect, startX: CGFloat, attributes: [String : AnyObject], padding: CGFloat = 12) {
+        let details = [
+            (NSLocalizedString("Phone:", comment: "phone details text"), self.item.phone),
+            (NSLocalizedString("Mail:", comment: "mail details text"), self.item.email),
+            (NSLocalizedString("Location:", comment: "location details text"), self.item.city)
+        ]
+        
+        let detailLabelRects: [(CGRect, String)] = details.reduce([]) {
+            let rect = CGRect(
+                origin: CGPoint(x: contentRect.minX, y: ($0.last?.0.maxY ?? startX) + padding),
+                size: ($1.0 as NSString).sizeWithAttributes(attributes)
+            )
+            ($1.0 as NSString).drawAtPoint(rect.origin, withAttributes: attributes)
+            return $0 + [(rect, $1.1)]
+        }
+        
+        let detailValueX: CGFloat = detailLabelRects.reduce(contentRect.minX) { max($0, $1.0.maxX) } + padding
+        
+        detailLabelRects.forEach {
+            ($0.1 as NSString).drawAtPoint(CGPoint(x: detailValueX, y: $0.0.minY), withAttributes: attributes)
+        }
+    }
 }
 //MARK: - CGSize extension
 func *(size: CGSize, factor: CGFloat) -> CGSize {
@@ -164,6 +281,11 @@ extension CGSize {
     }
 }
 
+extension CGRect {
+    func set(Y y: CGFloat) -> CGRect {
+        return CGRect(x: self.origin.x, y: y, width: self.width, height: self.height)
+    }
+}
 extension CGFloat {
     private static let POINTS_PER_INCH: CGFloat = 72
     
