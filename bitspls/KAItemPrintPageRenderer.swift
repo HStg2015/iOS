@@ -77,7 +77,7 @@ class KAItemPrintPageRenderer: UIPrintPageRenderer {
         case 0:
             print(contentRect.width, contentRect.height)
             switch PageType(rect: contentRect) {
-            case .Label: break
+            case .Label: drawLabel(contentRect)
             case . HalfSize: drawHalfSize(contentRect)
             case .Large : drawLarge(contentRect)
                 
@@ -90,6 +90,76 @@ class KAItemPrintPageRenderer: UIPrintPageRenderer {
     }
     
     //MARK: Drawing
+    
+    private func drawLabel(contentRect: CGRect) {
+        let rect = contentRect.insetBy(dx: 2, dy: 2)
+        let titleParagraphStyle = NSMutableParagraphStyle()
+        titleParagraphStyle.alignment = .Center
+        let titleAttributes: [String : AnyObject] = [
+            NSForegroundColorAttributeName : UIColor.blackColor(),
+            NSFontAttributeName : UIFont.boldSystemFontOfSize(13),
+            NSParagraphStyleAttributeName : titleParagraphStyle
+        ]
+        
+        let descriptionAttributes: [String : AnyObject] = [
+            NSForegroundColorAttributeName : UIColor.blackColor(),
+            NSFontAttributeName : UIFont.systemFontOfSize(8),
+            NSParagraphStyleAttributeName : titleParagraphStyle
+        ]
+
+        let padding: CGFloat = 9
+
+        let titleRect = CGRect(
+            origin: contentRect.origin,
+            size: CGSize(
+                width: contentRect.width,
+                height:  (self.item.title as NSString).boundingRectWithSize(rect.size, options: .UsesLineFragmentOrigin, attributes: titleAttributes, context: nil).height
+            )
+        )
+        (self.item.title as NSString).drawInRect(titleRect, withAttributes: titleAttributes)
+
+
+        let details = [
+            (NSLocalizedString("Phone:", comment: "phone details text"), self.item.phone),
+            (NSLocalizedString("Mail:", comment: "mail details text"), self.item.email),
+            (NSLocalizedString("Location:", comment: "location details text"), self.item.city)
+        ]
+        
+        let detailSize = CGSize(width: rect.width, height: (rect.maxY - titleRect.maxY) + padding)
+        let detailRects: [((CGRect, String), (CGRect, String))] = details.reduce([]) {
+            let labelY = ($0.last?.1.0.maxY ?? 0) + padding
+            let labelRect = CGRect(
+                origin: CGPoint(x: rect.minX, y: labelY),
+                size: ($1.0 as NSString).boundingRectWithSize(
+                    CGSize(width: detailSize.width, height: detailSize.height - labelY),
+                    options: .UsesLineFragmentOrigin, attributes: descriptionAttributes, context: nil
+                    ).size
+            )
+            let valueY = labelRect.maxY + padding / 2
+            let valueRect = CGRect(
+                origin: CGPoint(x: rect.minX + 5, y: valueY),
+                size: ($1.1 as NSString).boundingRectWithSize(
+                    CGSize(width: detailSize.width, height: detailSize.height - valueY),
+                    options: .UsesLineFragmentOrigin, attributes: descriptionAttributes, context: nil
+                    ).size
+            )
+            return $0 + [((labelRect, $1.0), (valueRect, $1.1))]
+        }
+        
+        let detailHeight = detailRects.last?.1.0.maxY ?? 0.0
+        let descriptionRect = CGRect(x: rect.minX, y: titleRect.maxY + padding, width: rect.width, height: rect.maxY - titleRect.maxY - padding * 2 - detailHeight)
+        (self.item.description as NSString).drawWithRect(
+            descriptionRect,
+            options: .UsesLineFragmentOrigin, attributes: descriptionAttributes, context: nil
+        )
+        
+        detailRects.forEach {
+            ($0.0.1 as NSString).drawInRect($0.0.0.set(Y: $0.0.0.origin.y + descriptionRect.maxY + padding), withAttributes: descriptionAttributes)
+            ($0.1.1 as NSString).drawInRect($0.1.0.set(Y: $0.1.0.origin.y + descriptionRect.maxY + padding), withAttributes: descriptionAttributes)
+        }
+        
+        
+    }
     
     private func drawHalfSize(contentRect: CGRect) {
         let titleParagraphStyle = NSMutableParagraphStyle()
@@ -167,6 +237,8 @@ class KAItemPrintPageRenderer: UIPrintPageRenderer {
         )
         
     }
+    
+    
     private func drawLarge(contentRect: CGRect) {
         
         let titleParagraphStyle = NSMutableParagraphStyle()
